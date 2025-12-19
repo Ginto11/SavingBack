@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LIIhjtRvy/Q=",
+  "dgSpecHash": "vM75yVUwPsY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\EQUIPO\\Documents\\Proyectos.NET\\SavingBack\\SavingBack.csproj",
+  "projectFilePath": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\SavingBack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\EQUIPO\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\EQUIPO\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

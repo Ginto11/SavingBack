@@ -113,8 +113,45 @@
   },
   {
     "ContainingType": "SavingBack.Controllers.MetaAhorroController",
-    "Method": "ObtenerCumplimientoDeMetas",
-    "RelativePath": "api/metas/cumplimiento/usuario/{id}",
+    "Method": "ActualizarMeta",
+    "RelativePath": "api/metas/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "meta",
+        "Type": "SavingBack.Dtos.ActualizarMetaDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
+    "Method": "Cancelar",
+    "RelativePath": "api/metas/cancelar/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
+    "Method": "ObtenerMetasActivasConProgresoPorUsuarioId",
+    "RelativePath": "api/metas/progreso/usuario/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -131,6 +168,22 @@
     "ContainingType": "SavingBack.Controllers.MetaAhorroController",
     "Method": "ObtenerMetasPorUsuario",
     "RelativePath": "api/metas/usuario/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
+    "Method": "ObtenerTodasLasMetasPorUsuarioId",
+    "RelativePath": "api/metas/usuario/{id}/todas",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -165,6 +218,83 @@
         "Name": "usuario",
         "Type": "SavingBack.Models.Usuario",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.UsuarioController",
+    "Method": "ObtenerUsuario",
+    "RelativePath": "api/usuarios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.UsuarioController",
+    "Method": "ActualizarUsuario",
+    "RelativePath": "api/usuarios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PrimerNombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PrimerApellido",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Cedula",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Correo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FechaNacimiento",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "ManejaGastos",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "FotoPerfil",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NuevaFoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

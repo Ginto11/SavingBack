@@ -60,40 +60,44 @@ namespace SavingBack.Services
         }
 
 
-        public ClaimsPrincipal? ValidarToken(string token)
+        public ClaimsPrincipal? ValidarJWT(string token)
         {
-            byte[] bytesDeLLaveSecreta = Encoding.UTF8.GetBytes(config["Jwt:Key"]!);
+            byte[] bytesLLaveSecreta = Encoding.UTF8.GetBytes("Jwt:Key");
 
             var manejadorToken = new JwtSecurityTokenHandler();
 
-            var parametrosAValidar = new TokenValidationParameters
+            var paramatrosAValidar = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(bytesDeLLaveSecreta),
+                IssuerSigningKey = new SymmetricSecurityKey(bytesLLaveSecreta),
 
                 ValidateAudience = true,
                 ValidateIssuer = true,
 
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.Zero
-
             };
+
 
             try
             {
-                var claimPrincipal = manejadorToken.ValidateToken(token, parametrosAValidar, out SecurityToken validatedToken);
+                var claimsPrincipal = manejadorToken.ValidateToken(token, paramatrosAValidar, out SecurityToken validatedToken);
 
                 var jwtToken = validatedToken as JwtSecurityToken;
 
                 if (jwtToken == null || !jwtToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
-                    throw new SecurityTokenException("Token invalido");
+                {
+                    return null;
+                }
 
-                return claimPrincipal;
+                return claimsPrincipal;
+
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
     }
 }

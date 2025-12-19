@@ -190,7 +190,7 @@
         }
       }
     },
-    "/api/metas/{id}": {
+    "/api/metas/usuario/{id}/todas": {
       "get": {
         "tags": [
           "MetaAhorro"
@@ -213,8 +213,94 @@
         }
       }
     },
-    "/api/metas/cumplimiento/usuario/{id}": {
+    "/api/metas/{id}": {
       "get": {
+        "tags": [
+          "MetaAhorro"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "MetaAhorro"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActualizarMetaDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActualizarMetaDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActualizarMetaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/metas/progreso/usuario/{id}": {
+      "get": {
+        "tags": [
+          "MetaAhorro"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/metas/cancelar/{id}": {
+      "delete": {
         "tags": [
           "MetaAhorro"
         ],
@@ -276,10 +362,148 @@
           }
         }
       }
+    },
+    "/api/usuarios/{id}": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Correo",
+                  "PrimerApellido",
+                  "PrimerNombre"
+                ],
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "PrimerNombre": {
+                    "type": "string"
+                  },
+                  "PrimerApellido": {
+                    "type": "string"
+                  },
+                  "Cedula": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "Correo": {
+                    "type": "string"
+                  },
+                  "FechaNacimiento": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "ManejaGastos": {
+                    "type": "boolean"
+                  },
+                  "FotoPerfil": {
+                    "type": "string"
+                  },
+                  "NuevaFoto": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "PrimerNombre": {
+                  "style": "form"
+                },
+                "PrimerApellido": {
+                  "style": "form"
+                },
+                "Cedula": {
+                  "style": "form"
+                },
+                "Correo": {
+                  "style": "form"
+                },
+                "FechaNacimiento": {
+                  "style": "form"
+                },
+                "ManejaGastos": {
+                  "style": "form"
+                },
+                "FotoPerfil": {
+                  "style": "form"
+                },
+                "NuevaFoto": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "ActualizarMetaDto": {
+        "required": [
+          "montoObjetivo",
+          "nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "montoObjetivo": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "Ahorro": {
         "type": "object",
         "properties": {
@@ -435,7 +659,14 @@
           "aceptaTerminos": {
             "type": "boolean"
           },
+          "manejaGastos": {
+            "type": "boolean"
+          },
           "rol": {
+            "type": "string",
+            "nullable": true
+          },
+          "fotoPerfil": {
             "type": "string",
             "nullable": true
           }

@@ -40,6 +40,29 @@ namespace SavingBack.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("validar-token")]
+        public ActionResult ValidarToken([FromHeader(Name = "Authorization")] string? bearerToken)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(bearerToken) || bearerToken.StartsWith("Bearer "))
+                    return RespuestasService.TokenInvalido("Token no enviado o mal formado.");
+
+                var tokenJWT = bearerToken.Substring("Bearer ".Length);
+
+                var validacion = authService.ValidarJWT(tokenJWT);
+                if (validacion == null)
+                    return RespuestasService.TokenInvalido("Token expirado, inicie sesión nuevamente.");
+
+                return RespuestasService.TokenValido();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
     }
 }

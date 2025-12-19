@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\default.png",
+      "PackagePath": "staticwebassets\\Uploads\\Fotos\\default.png"
+    },
+    {
+      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\ead870c4-59a3-4c75-8c68-a45912edf071 + .jpg",
+      "PackagePath": "staticwebassets\\Uploads\\Fotos\\ead870c4-59a3-4c75-8c68-a45912edf071 + .jpg"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.SavingBack.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.SavingBack.props",
+      "PackagePath": "build\\SavingBack.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SavingBack.props",
+      "PackagePath": "buildMultiTargeting\\SavingBack.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.SavingBack.props",
+      "PackagePath": "buildTransitive\\SavingBack.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

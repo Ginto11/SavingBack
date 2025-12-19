@@ -1,1 +1,58 @@
-{"Version":1,"Hash":"MbSrPpV5FHlLYVE5AR8lJsZzTyMWZZEdgZ2Ty8eEHUM=","Source":"SavingBack","BasePath":"_content/SavingBack","Mode":"Default","ManifestType":"Publish","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "3E3fbtFEkeIEZl8qW9Syqzj6QQPPECYqaI9y8+Br5w0=",
+  "Source": "SavingBack",
+  "BasePath": "_content/SavingBack",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SavingBack\\wwwroot",
+      "Source": "SavingBack",
+      "ContentRoot": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\",
+      "BasePath": "_content/SavingBack",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\default.png",
+      "SourceId": "SavingBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\",
+      "BasePath": "_content/SavingBack",
+      "RelativePath": "Uploads/Fotos/default.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Fotos\\default.png"
+    },
+    {
+      "Identity": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\ead870c4-59a3-4c75-8c68-a45912edf071 + .jpg",
+      "SourceId": "SavingBack",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\",
+      "BasePath": "_content/SavingBack",
+      "RelativePath": "Uploads/Fotos/ead870c4-59a3-4c75-8c68-a45912edf071 + .jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\Fotos\\ead870c4-59a3-4c75-8c68-a45912edf071 + .jpg"
+    }
+  ]
+}

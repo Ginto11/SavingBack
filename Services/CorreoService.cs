@@ -68,10 +68,10 @@ namespace SavingBack.Services
                 </html>";
 
 
-                var emailEmisor = configuration.GetValue<string>("CONFIG_EMAIL:EMAIL");
-                var password = configuration.GetValue<string>("CONFIG_EMAIL:PASSWORD");
-                var host = configuration.GetValue<string>("CONFIG_EMAIL:HOST");
-                var puerto = configuration.GetValue<int>("CONFIG_EMAIL:PUERTO");
+                var emailEmisor = configuration.GetValue<string>("CONFIGURACION_EMAIL:EMAIL");
+                var password = configuration.GetValue<string>("CONFIGURACION_EMAIL:PASSWORD");
+                var host = configuration.GetValue<string>("CONFIGURACION_EMAIL:HOST");
+                var puerto = configuration.GetValue<int>("CONFIGURACION_EMAIL:PUERTO");
 
                 var smtpCliente = new SmtpClient(host, puerto);
                 smtpCliente.EnableSsl = true;
@@ -149,10 +149,10 @@ namespace SavingBack.Services
                 </body>
                 </html>";
 
-                var emailEmisor = configuration.GetValue<string>("CONFIG_EMAIL:EMAIL");
-                var host = configuration.GetValue<string>("CONFIG_EMAIL:HOST");
-                var puerto = configuration.GetValue<int>("CONFIG_EMAIL:PUERTO");
-                var password = configuration.GetValue<string>("CONFIG_EMAIL:PASSWORD");
+                var emailEmisor = configuration.GetValue<string>("CONFIGURACION_EMAIL:EMAIL");
+                var host = configuration.GetValue<string>("CONFIGURACION_EMAIL:HOST");
+                var puerto = configuration.GetValue<int>("CONFIGURACION_EMAIL:PUERTO");
+                var password = configuration.GetValue<string>("CONFIGURACION_EMAIL:PASSWORD");
 
                 var smtpCliente = new SmtpClient(host, puerto);
                 smtpCliente.EnableSsl = true;

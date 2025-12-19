@@ -28,11 +28,34 @@ namespace SavingBack.Services
             }
         }
 
-        public async Task<Usuario?> BuscarPorId(int id)
+        public async Task<UsuarioDto?> BuscarPorId(int id)
         {
             try
             {
-                return await context.Usuario.FirstOrDefaultAsync(usuario => usuario.Id == id);
+                return await context.Usuario
+                    .Select(usuario => new UsuarioDto { 
+                        Id = usuario.Id,
+                        PrimerApellido = usuario.PrimerApellido,
+                        Correo = usuario.Correo,
+                        FechaNacimiento = usuario.FechaNacimiento,
+                        FotoPerfil = usuario.FotoPerfil,
+                        PrimerNombre = usuario.PrimerNombre,
+                        Cedula = usuario.Cedula,
+                        ManejaGastos = usuario.ManejaGastos
+                    })
+                    .FirstOrDefaultAsync(usuario => usuario.Id == id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<Usuario?> BuscarEntidadUsuarioPorId(int id)
+        {
+            try
+            {
+                return await context.Usuario.FirstOrDefaultAsync(u => u.Id == id);
             }
             catch (Exception)
             {

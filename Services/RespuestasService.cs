@@ -57,5 +57,16 @@ namespace SavingBack.Services
                 }
             });
         }
+
+        public static ActionResult TokenInvalido(string mensaje)
+        {
+            return new ObjectResult(new { codigo = 401, mensaje }) { StatusCode = 401 };
+        }
+
+        public static ActionResult TokenValido()
+        {
+            return new ObjectResult(new { codigo = 200, mensaje = "Token valido" }) { StatusCode = 200 };
+        }
+
     }
 }

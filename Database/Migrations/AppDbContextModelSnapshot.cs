@@ -55,6 +55,85 @@ namespace SavingBack.Database.Migrations
                     b.ToTable("Ahorro");
                 });
 
+            modelBuilder.Entity("SavingBack.Models.CategoriaGasto", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoriaGasto");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Nombre = "Alimentación"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Nombre = "Transporte"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Nombre = "Salud"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Nombre = "Hogar"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Nombre = "Servicios"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Nombre = "Educación"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            Nombre = "Entretenimiento"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Nombre = "Mascotas"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            Nombre = "Ropa"
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            Nombre = "Deudas"
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            Nombre = "Inversiones"
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            Nombre = "Otros"
+                        });
+                });
+
             modelBuilder.Entity("SavingBack.Models.MetaAhorro", b =>
                 {
                     b.Property<int>("Id")
@@ -119,6 +198,13 @@ namespace SavingBack.Database.Migrations
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FotoPerfil")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ManejaGastos")
+                        .HasColumnType("bit");
+
                     b.Property<string>("NombreUsuario")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -132,7 +218,6 @@ namespace SavingBack.Database.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rol")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -151,6 +236,8 @@ namespace SavingBack.Database.Migrations
                             Contrasena = "+osxdTMbvrdSIPgNenMgtQ==",
                             Correo = "Salinitosnelson@gmail.com",
                             FechaNacimiento = new DateTime(2001, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoPerfil = "/Fotos/default.png",
+                            ManejaGastos = false,
                             NombreUsuario = "Root",
                             PrimerApellido = "",
                             PrimerNombre = "Admin",

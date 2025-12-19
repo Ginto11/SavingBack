@@ -73,7 +73,8 @@ namespace SavingBack.Controllers
                     NombreUsuariAhorro = usuario!.PrimerNombre,
                     DescripcionAhorro = ahorroDto.Descripcion!,
                     MontoAhorro = ahorroDto.Monto,
-                    NombreMetaAhorro = meta.Nombre
+                    NombreMetaAhorro = meta.Nombre,
+                    FechaAhorro = DateTime.Now
                 };
 
 
