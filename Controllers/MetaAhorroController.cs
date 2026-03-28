@@ -29,7 +29,7 @@ namespace SavingBack.Controllers
 
             }catch(Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -46,7 +46,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -61,7 +61,7 @@ namespace SavingBack.Controllers
                 return RespuestasService.Ok(metas);
             }catch(Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -74,14 +74,14 @@ namespace SavingBack.Controllers
                 var meta = await metaAhorroService.ObtenerPorId(id);
 
                 if (meta is null)
-                    return RespuestasService.NotFound($"Meta con Id = ({id}), no encontrada.");
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada.");
 
                 return RespuestasService.Ok(meta);
 
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -98,7 +98,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -111,7 +111,7 @@ namespace SavingBack.Controllers
                 var meta = await metaAhorroService.ObtenerPorId(id);
 
                 if (meta is null)
-                    return RespuestasService.NotFound($"Meta con Id = ({id}), no encontrada");
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada");
 
                 meta.Estado = "Cancelada";
 
@@ -120,7 +120,7 @@ namespace SavingBack.Controllers
                 return RespuestasService.Ok("Meta cancelada exitosamente.");
             }catch(Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -134,7 +134,7 @@ namespace SavingBack.Controllers
                 var metaEncontrada = await metaAhorroService.ObtenerPorId(id);
 
                 if (metaEncontrada is null)
-                    return RespuestasService.NotFound($"Meta con Id = ({id}), no encontrada");
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada");
 
                 metaEncontrada.MontoObjetivo = meta.MontoObjetivo;
                 metaEncontrada.Nombre = meta.Nombre;
@@ -145,7 +145,7 @@ namespace SavingBack.Controllers
 
             }catch(Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 

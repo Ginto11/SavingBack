@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SavingBack.Dtos;
 using SavingBack.Models;
@@ -46,10 +45,13 @@ namespace SavingBack.Controllers
                 var meta = await metaAhorroService.ObtenerPorId(ahorroDto.MetaAhorroId);
 
                 if (meta is null)
-                    return RespuestasService.NotFound($"Meta con Id = ({ahorroDto.MetaAhorroId}), no encontrada.");
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({ahorroDto.MetaAhorroId}), no encontrada.");
 
                 if ((ahorroDto.Monto + meta.MontoActual) > meta.MontoObjetivo)
-                    return RespuestasService.Conflict($"Por favor ingrese el valor exacto para cumplir la meta.");
+                {
+                    var diferencia = meta.MontoObjetivo - meta.MontoActual;
+                    return RespuestasService.ErrorModelo(this, $"Por favor ingrese el valor exacto para cumplir la meta. Serian ${diferencia:N0} pesos.");
+                }
 
                 if(meta.MontoActual is null)
                 {
@@ -92,7 +94,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -111,7 +113,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -130,7 +132,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -149,7 +151,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
     }

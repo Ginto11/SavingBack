@@ -88,10 +88,26 @@ namespace SavingBack.Services
             }
         }
 
-        public async Task Insertar(Usuario entidad)
+        public async Task Insertar(CrearUsuarioDto dto)
         {
             try
             {
+                var entidad = new Usuario
+                {
+                    Id = 0,
+                    PrimerNombre = dto.PrimerNombre,
+                    PrimerApellido = dto.PrimerApellido,
+                    Cedula = dto.Cedula,
+                    NombreUsuario = dto.NombreUsuario,
+                    Correo = dto.Correo,
+                    FechaNacimiento = dto.FechaNacimiento,
+                    Contrasena = dto.Contrasena,
+                    AceptaTerminos = dto.AceptaTerminos,
+                    ManejaGastos = dto.ManejaGastos,
+                    Rol = dto.Rol,
+                    FotoPerfil = dto.FotoPerfil
+                };
+
                 context.Add(entidad);
                 await context.SaveChangesAsync();
             }

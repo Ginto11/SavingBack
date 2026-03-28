@@ -1,12 +1,16 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\default.png",
-      "PackagePath": "staticwebassets\\Uploads\\Fotos\\default.png"
+      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\Foto121341242555.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\Fotos\\Foto121341242555.jpg"
     },
     {
-      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\ead870c4-59a3-4c75-8c68-a45912edf071 + .jpg",
-      "PackagePath": "staticwebassets\\Uploads\\Fotos\\ead870c4-59a3-4c75-8c68-a45912edf071 + .jpg"
+      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\Foto121341242555.png",
+      "PackagePath": "staticwebassets\\Uploads\\Fotos\\Foto121341242555.png"
+    },
+    {
+      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\default.png",
+      "PackagePath": "staticwebassets\\Uploads\\Fotos\\default.png"
     },
     {
       "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.SavingBack.Microsoft.AspNetCore.StaticWebAssets.props",

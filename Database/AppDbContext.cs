@@ -20,10 +20,35 @@ namespace SavingBack.Database
 
         public DbSet<CategoriaGasto> CategoriaGasto { get; set; }
 
+        public DbSet<Ingreso> Ingreso { get; set; }
+
+        public DbSet<Egreso> Egreso { get; set; }
+
         protected override void OnModelCreating(ModelBuilder model)
         {
             base.OnModelCreating(model);
 
+            model.Entity<Ingreso>()
+                .ToTable(tabla => tabla.HasCheckConstraint("CK_Ingreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi')"));
+
+            model.Entity<Ingreso>()
+                .HasData(
+                    new Ingreso { Id = 1, FechaRegistro = DateTime.Now, Tipo = "Efectivo", Monto = 10000, UsuarioId = 2 },
+                    new Ingreso { Id = 2, FechaRegistro = DateTime.Now, Tipo = "Nequi", Monto = 80000, UsuarioId = 2 },
+                    new Ingreso { Id = 3, FechaRegistro = DateTime.Now, Tipo = "App", Monto = 120000, UsuarioId = 2 },
+                    new Ingreso { Id = 4, FechaRegistro = DateTime.Now, Tipo = "Efectivo", Monto = 66000, UsuarioId = 2 }
+                );
+
+            model.Entity<Egreso>()
+                .ToTable(tabla => tabla.HasCheckConstraint("CK_Egreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi')"));
+
+            model.Entity<Egreso>()
+                .HasData(
+                    new Ingreso { Id = 1, FechaRegistro = DateTime.Now, Tipo = "Nequi", Monto = 100000, UsuarioId = 2 },
+                    new Ingreso { Id = 2, FechaRegistro = DateTime.Now, Tipo = "App", Monto = 8000, UsuarioId = 2 },
+                    new Ingreso { Id = 3, FechaRegistro = DateTime.Now, Tipo = "Efectivo", Monto = 12000, UsuarioId = 2 },
+                    new Ingreso { Id = 4, FechaRegistro = DateTime.Now, Tipo = "Efectivo", Monto = 60000, UsuarioId = 2 }
+                );
 
             model.Entity<Usuario>()
                 .HasData(

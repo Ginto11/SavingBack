@@ -5,7 +5,7 @@
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvulTf8D8AEKXvnMxJC44wwAAAAACAAAAAAAQZgAAAAEAACAAAAAQ3elnMaAhJVqtV3e0Fgs8GUgt7hh/9XQWWaJmHV9e+gAAAAAOgAAAAAIAACAAAAB4Eu4P0LyrP+L5il5JPqX771cVtUClVdceyhweQkwF0SAAAACEXruCKn1FXMplIq897MQZHwRbht2igSSUj4Zvfr4I9EAAAAAFtcmcJ8url86IL5dFaign2V4ZAPJ7JRf0yZ8nOota+5t0UvGQZoaoPs8ncPfUkRwNwJk3BF183W5ZV9s8DAdx</EncryptedPassword>
     <_PublishTargetUrl>ftp://SavingBack.somee.com/www.SavingBack.somee.com</_PublishTargetUrl>
-    <History>True|2025-12-19T00:08:55.5865486Z||;</History>
+    <History>True|2026-03-28T19:03:51.1092610Z||;True|2026-03-28T00:55:27.6052612-05:00||;True|2026-03-27T11:58:55.9662627-05:00||;True|2026-03-27T00:15:50.6495109-05:00||;True|2026-03-26T22:20:27.0613826-05:00||;True|2026-03-26T01:15:13.4751688-05:00||;True|2026-03-23T19:01:26.4702666-05:00||;True|2025-12-23T21:15:00.0684370-05:00||;True|2025-12-18T22:58:56.7313487-05:00||;True|2025-12-18T19:08:55.5865486-05:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -21,7 +21,7 @@
       <publishTime>11/30/2025 22:49:39</publishTime>
     </File>
     <File Include="appsettings.production.json">
-      <publishTime>12/18/2025 19:06:41</publishTime>
+      <publishTime>03/28/2026 14:01:12</publishTime>
     </File>
     <File Include="Azure.Core.dll">
       <publishTime>07/15/2025 11:24:30</publishTime>
@@ -150,19 +150,19 @@
       <publishTime>09/16/2024 18:10:56</publishTime>
     </File>
     <File Include="SavingBack.deps.json">
-      <publishTime>12/18/2025 19:06:32</publishTime>
+      <publishTime>03/28/2026 14:01:04</publishTime>
     </File>
     <File Include="SavingBack.dll">
-      <publishTime>12/18/2025 19:06:20</publishTime>
+      <publishTime>03/28/2026 14:00:54</publishTime>
     </File>
     <File Include="SavingBack.exe">
-      <publishTime>12/18/2025 19:06:21</publishTime>
+      <publishTime>03/28/2026 14:00:54</publishTime>
     </File>
     <File Include="SavingBack.pdb">
-      <publishTime>12/18/2025 19:06:20</publishTime>
+      <publishTime>03/28/2026 14:00:54</publishTime>
     </File>
     <File Include="SavingBack.runtimeconfig.json">
-      <publishTime>12/17/2025 23:45:15</publishTime>
+      <publishTime>03/23/2026 18:57:19</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.Swagger.dll">
       <publishTime>05/21/2024 11:42:50</publishTime>
@@ -198,13 +198,25 @@
       <publishTime>11/12/2025 15:28:08</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>12/18/2025 19:06:41</publishTime>
+      <publishTime>03/28/2026 14:01:12</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/Fotos/9910e315-93ef-455a-b8ac-aad1cbd65585 + .jpg">
+      <publishTime>12/18/2025 22:53:49</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/Fotos/d5c65ebb-a3bd-4a29-a877-347936e7c771 + .jpg">
+      <publishTime>12/18/2025 22:53:30</publishTime>
     </File>
     <File Include="wwwroot/Uploads/Fotos/default.png">
       <publishTime>12/14/2025 13:39:44</publishTime>
     </File>
     <File Include="wwwroot/Uploads/Fotos/ead870c4-59a3-4c75-8c68-a45912edf071 + .jpg">
       <publishTime>12/14/2025 20:53:17</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/Fotos/Foto121341242555.jpg">
+      <publishTime>12/23/2025 21:00:11</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/Fotos/Foto121341242555.png">
+      <publishTime>12/23/2025 20:57:35</publishTime>
     </File>
     <File Include="zh-Hans/Microsoft.Data.SqlClient.resources.dll">
       <publishTime>11/12/2025 15:29:14</publishTime>

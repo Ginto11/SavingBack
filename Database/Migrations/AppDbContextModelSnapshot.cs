@@ -134,6 +134,136 @@ namespace SavingBack.Database.Migrations
                         });
                 });
 
+            modelBuilder.Entity("SavingBack.Models.Egreso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Monto")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Egreso", t =>
+                        {
+                            t.HasCheckConstraint("CK_Egreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi')");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9394),
+                            Monto = 100000,
+                            Tipo = "Nequi",
+                            UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9397),
+                            Monto = 8000,
+                            Tipo = "App",
+                            UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9399),
+                            Monto = 12000,
+                            Tipo = "Efectivo",
+                            UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9402),
+                            Monto = 60000,
+                            Tipo = "Efectivo",
+                            UsuarioId = 2
+                        });
+                });
+
+            modelBuilder.Entity("SavingBack.Models.Ingreso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Monto")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Ingreso", t =>
+                        {
+                            t.HasCheckConstraint("CK_Ingreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi')");
+                        });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(8996),
+                            Monto = 10000,
+                            Tipo = "Efectivo",
+                            UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(8999),
+                            Monto = 80000,
+                            Tipo = "Nequi",
+                            UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9002),
+                            Monto = 120000,
+                            Tipo = "App",
+                            UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9005),
+                            Monto = 66000,
+                            Tipo = "Efectivo",
+                            UsuarioId = 2
+                        });
+                });
+
             modelBuilder.Entity("SavingBack.Models.MetaAhorro", b =>
                 {
                     b.Property<int>("Id")
@@ -236,7 +366,7 @@ namespace SavingBack.Database.Migrations
                             Contrasena = "+osxdTMbvrdSIPgNenMgtQ==",
                             Correo = "Salinitosnelson@gmail.com",
                             FechaNacimiento = new DateTime(2001, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoPerfil = "/Fotos/default.png",
+                            FotoPerfil = "/Uploads/Fotos/default.png",
                             ManejaGastos = false,
                             NombreUsuario = "Root",
                             PrimerApellido = "",
@@ -258,6 +388,28 @@ namespace SavingBack.Database.Migrations
                         .IsRequired();
 
                     b.Navigation("MetaAhorro");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("SavingBack.Models.Egreso", b =>
+                {
+                    b.HasOne("SavingBack.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("SavingBack.Models.Ingreso", b =>
+                {
+                    b.HasOne("SavingBack.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Usuario");
                 });
