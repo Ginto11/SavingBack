@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SavingBack.Dtos;
 using SavingBack.Services;
 
@@ -6,7 +7,7 @@ namespace SavingBack.Controllers
 {
     [ApiController]
     [Route("api/auth")]
-    public class AuthController
+    public class AuthController : ControllerBase
     {
         private readonly AuthService authService;
         private readonly UsuarioService usuarioService;
@@ -22,13 +23,11 @@ namespace SavingBack.Controllers
         {
             try
             {
-                if (usuarioLogim.Usuario.Trim() == "" && usuarioLogim.Contrasena.Trim() == "")
-                    return RespuestasService.BadRequest();
 
                 var usuario = await usuarioService.BuscarPorContrasenaYUsuario(usuarioLogim);
 
                 if (usuario is null)
-                    return RespuestasService.InvalidCredentials("Credenciales incorrectas.");
+                    return RespuestasService.ErrorModelo(this, "Credenciales incorrectas");
 
                 var token = authService.GenerarToken(usuario);
 
@@ -36,33 +35,36 @@ namespace SavingBack.Controllers
                 
             }catch(Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
-        [HttpPost]
-        [Route("validar-token")]
-        public ActionResult ValidarToken([FromHeader(Name = "Authorization")] string? bearerToken)
+        [HttpGet]
+        [Route("validar_token")]
+        public IActionResult ValidarToken([FromHeader(Name = "Authorization")] string? bearerToken)
         {
             try
             {
-                if (string.IsNullOrEmpty(bearerToken) || bearerToken.StartsWith("Bearer "))
-                    return RespuestasService.TokenInvalido("Token no enviado o mal formado.");
+                if (string.IsNullOrEmpty(bearerToken) || !bearerToken.StartsWith("Bearer "))
+                    return RespuestasService.ErrorModelo(this, "Token no enviado o mal formado.");
 
                 var tokenJWT = bearerToken.Substring("Bearer ".Length);
 
                 var validacion = authService.ValidarJWT(tokenJWT);
                 if (validacion == null)
-                    return RespuestasService.TokenInvalido("Token expirado, inicie sesión nuevamente.");
+                {
+                    return RespuestasService.ErrorModelo(this, "Token expirado, inicie sesión nuevamente.");
+                }
 
                 return RespuestasService.TokenValido();
+
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                throw;
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
-
+        
 
     }
 }

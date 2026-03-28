@@ -68,5 +68,10 @@ namespace SavingBack.Services
             return new ObjectResult(new { codigo = 200, mensaje = "Token valido" }) { StatusCode = 200 };
         }
 
+        public static ActionResult ErrorModelo(ControllerBase controller, string mensaje)
+        {
+            controller.ModelState.AddModelError("Mensaje: ", mensaje);
+            return controller.ValidationProblem(controller.ModelState);
+        }
     }
 }

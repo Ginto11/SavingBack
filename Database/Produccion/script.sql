@@ -164,3 +164,133 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+CREATE TABLE [Egreso] (
+    [Id] int NOT NULL IDENTITY,
+    [Tipo] nvarchar(max) NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Monto] int NOT NULL,
+    CONSTRAINT [PK_Egreso] PRIMARY KEY ([Id]),
+    CONSTRAINT [CK_Egreso_Tipo] CHECK ([Tipo] IN ('Efectivo', 'App', 'Nequi'))
+);
+GO
+
+CREATE TABLE [Ingreso] (
+    [Id] int NOT NULL IDENTITY,
+    [UsuarioId] int NOT NULL,
+    [Tipo] nvarchar(max) NOT NULL,
+    [FechaRegistro] datetime2 NOT NULL,
+    [Monto] int NOT NULL,
+    CONSTRAINT [PK_Ingreso] PRIMARY KEY ([Id]),
+    CONSTRAINT [CK_Ingreso_Tipo] CHECK ([Tipo] IN ('Efectivo', 'App', 'Nequi')),
+    CONSTRAINT [FK_Ingreso_Usuario_UsuarioId] FOREIGN KEY ([UsuarioId]) REFERENCES [Usuario] ([Id]) ON DELETE NO ACTION
+);
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'FechaRegistro', N'Monto', N'Tipo') AND [object_id] = OBJECT_ID(N'[Egreso]'))
+    SET IDENTITY_INSERT [Egreso] ON;
+INSERT INTO [Egreso] ([Id], [FechaRegistro], [Monto], [Tipo])
+VALUES (1, '2026-03-25T23:09:26.2610230-05:00', 100000, N'Nequi'),
+(2, '2026-03-25T23:09:26.2610233-05:00', 8000, N'App'),
+(3, '2026-03-25T23:09:26.2610235-05:00', 12000, N'Efectivo'),
+(4, '2026-03-25T23:09:26.2610237-05:00', 60000, N'Efectivo');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'FechaRegistro', N'Monto', N'Tipo') AND [object_id] = OBJECT_ID(N'[Egreso]'))
+    SET IDENTITY_INSERT [Egreso] OFF;
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'FechaRegistro', N'Monto', N'Tipo', N'UsuarioId') AND [object_id] = OBJECT_ID(N'[Ingreso]'))
+    SET IDENTITY_INSERT [Ingreso] ON;
+INSERT INTO [Ingreso] ([Id], [FechaRegistro], [Monto], [Tipo], [UsuarioId])
+VALUES (1, '2026-03-25T23:09:26.2609775-05:00', 10000, N'Efectivo', 2),
+(2, '2026-03-25T23:09:26.2609778-05:00', 80000, N'Nequi', 2),
+(3, '2026-03-25T23:09:26.2609781-05:00', 120000, N'App', 2),
+(4, '2026-03-25T23:09:26.2609783-05:00', 66000, N'Efectivo', 2);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'FechaRegistro', N'Monto', N'Tipo', N'UsuarioId') AND [object_id] = OBJECT_ID(N'[Ingreso]'))
+    SET IDENTITY_INSERT [Ingreso] OFF;
+GO
+
+UPDATE [Usuario] SET [FotoPerfil] = N'/Uploads/Fotos/default.png'
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+GO
+
+CREATE INDEX [IX_Ingreso_UsuarioId] ON [Ingreso] ([UsuarioId]);
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260326040927_CreacionTablasIngresoEgreso', N'8.0.1');
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [Egreso] ADD [UsuarioId] int NOT NULL DEFAULT 0;
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-03-26T23:34:53.0639394-05:00', [UsuarioId] = 2
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-03-26T23:34:53.0639397-05:00', [UsuarioId] = 2
+WHERE [Id] = 2;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-03-26T23:34:53.0639399-05:00', [UsuarioId] = 2
+WHERE [Id] = 3;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-03-26T23:34:53.0639402-05:00', [UsuarioId] = 2
+WHERE [Id] = 4;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-03-26T23:34:53.0638996-05:00'
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-03-26T23:34:53.0638999-05:00'
+WHERE [Id] = 2;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-03-26T23:34:53.0639002-05:00'
+WHERE [Id] = 3;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-03-26T23:34:53.0639005-05:00'
+WHERE [Id] = 4;
+SELECT @@ROWCOUNT;
+
+GO
+
+CREATE INDEX [IX_Egreso_UsuarioId] ON [Egreso] ([UsuarioId]);
+GO
+
+ALTER TABLE [Egreso] ADD CONSTRAINT [FK_Egreso_Usuario_UsuarioId] FOREIGN KEY ([UsuarioId]) REFERENCES [Usuario] ([Id]) ON DELETE NO ACTION;
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260327043454_ModificandoTablaEgresos', N'8.0.1');
+GO
+
+COMMIT;
+GO
+

@@ -30,12 +30,12 @@ namespace SavingBack.Controllers
                 return Ok(usuarios);
             }catch(Exception error)
             {
-                return StatusCode(500, new { mensaje = error.Message });
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult> Nuevo(Usuario usuario)
+        public async Task<ActionResult> Nuevo([FromBody]  CrearUsuarioDto usuario)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -60,14 +60,14 @@ namespace SavingBack.Controllers
                 var usuario = await usuarioService.BuscarPorId(id);
 
                 if (usuario is null)
-                    return RespuestasService.NotFound("Usuario no encontrado");
+                    return RespuestasService.ErrorModelo(this, "Usuario no encontrado");
 
                 return RespuestasService.Ok(usuario);
 
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
 
@@ -79,7 +79,7 @@ namespace SavingBack.Controllers
             {
                 var usuarioExistente = await usuarioService.BuscarEntidadUsuarioPorId(id);
                 if (usuarioExistente is null)
-                    return RespuestasService.NotFound("Usuario no encontrado");
+                    return RespuestasService.ErrorModelo(this, "Usuario no encontrado");
 
                 usuarioExistente.PrimerNombre = usuario.PrimerNombre;
                 usuarioExistente.PrimerApellido = usuario.PrimerApellido;
@@ -90,7 +90,7 @@ namespace SavingBack.Controllers
 
                 if (usuario.NuevaFoto is not null)
                 {
-                    var nombreFoto = $"{Guid.NewGuid()} + {Path.GetExtension(usuario.NuevaFoto!.FileName)}";
+                    var nombreFoto = $"Foto{usuario.Cedula}{Path.GetExtension(usuario.NuevaFoto!.FileName)}";
                     var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", "Fotos", nombreFoto);
                     using var stream = new FileStream(ruta, FileMode.Create);
                     usuarioExistente.FotoPerfil = $"/Uploads/Fotos/{nombreFoto}";
@@ -103,7 +103,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ServerError(error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message);
             }
         }
     }   

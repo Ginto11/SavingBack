@@ -6,6 +6,7 @@ using SavingBack.Database;
 using SavingBack.Services;
 using SavingBack.Utilities;
 using System.Text;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddScoped<Utilidad>();
 builder.Services.AddScoped<MetaAhorroService>();
 builder.Services.AddScoped<AhorroService>();
 builder.Services.AddScoped<CorreoService>();
+builder.Services.AddScoped<IngresoService>();
+builder.Services.AddScoped<EgresoService>();
 
 builder.Services.AddLogging();      //PERMITE AGREGAR LOGS (MENSAJE EN TIEMPO DE EJECUSION EN LA CONSOLA)
 builder.Logging.ClearProviders();   //LIMPIA LOS LOGS POR DEFECTO QUE VIENEN 
@@ -35,6 +38,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
     };
+     
 });
 
 

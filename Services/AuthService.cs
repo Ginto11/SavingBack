@@ -62,7 +62,7 @@ namespace SavingBack.Services
 
         public ClaimsPrincipal? ValidarJWT(string token)
         {
-            byte[] bytesLLaveSecreta = Encoding.UTF8.GetBytes("Jwt:Key");
+            byte[] bytesLLaveSecreta = Encoding.UTF8.GetBytes(config["Jwt:Key"]!);
 
             var manejadorToken = new JwtSecurityTokenHandler();
 
@@ -71,6 +71,8 @@ namespace SavingBack.Services
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(bytesLLaveSecreta),
 
+                ValidAudience = config["Jwt:Audience"],
+                ValidIssuer = config["Jwt:Issuer"],
                 ValidateAudience = true,
                 ValidateIssuer = true,
 

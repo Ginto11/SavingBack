@@ -80,6 +80,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SavingBack.Controllers.AuthController",
+    "Method": "ValidarToken",
+    "RelativePath": "api/auth/validar_token",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Authorization",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SavingBack.Controllers.MetaAhorroController",
     "Method": "Nueva",
     "RelativePath": "api/metas",

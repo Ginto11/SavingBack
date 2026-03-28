@@ -136,6 +136,18 @@
         }
       }
     },
+    "/api/auth/validar_token": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/metas": {
       "post": {
         "tags": [
