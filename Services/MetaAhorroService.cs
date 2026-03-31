@@ -106,6 +106,21 @@ namespace SavingBack.Services
                 throw;
             }
         }
+
+        public async Task<IEnumerable<MetaAhorro>> MetasCumplidasPorUsuarioId(int id, string estado)
+        {
+            try
+            {
+                return await context.MetaAhorro
+                    .Where(meta => meta.UsuarioId == id && meta.Estado == estado)
+                    .OrderByDescending(meta => meta.Id)
+                    .ToListAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        } 
         
     }
 }

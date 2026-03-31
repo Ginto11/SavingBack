@@ -37,6 +37,7 @@ namespace SavingBack.Services
                     .OrderByDescending(a => a.Fecha)
                     .Select(a => new UltimoMovimientoAhorro
                     {
+                        Id = a.Id,
                         Descripcion = a.Descripcion!,
                         FechaAhorro = a.Fecha,
                         Monto = a.Monto
@@ -101,6 +102,32 @@ namespace SavingBack.Services
             {
                 context.Add(entidad);
                 await context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task Eliminar(Ahorro entidad)
+        {
+            try
+            {
+                context.Remove(entidad);
+                await context.SaveChangesAsync();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<Ahorro?> BuscarPorId(int id)
+        {
+            try
+            {
+                return await context.Ahorro.FirstOrDefaultAsync(ahorro => ahorro.Id == id);
             }
             catch (Exception)
             {

@@ -29,7 +29,7 @@ namespace SavingBack.Controllers
                 var totalEgreso = await egresoService.BuscarTotalEgresoEnTipo(egreso.Tipo, egreso.UsuarioId);
 
                 if (((totalIngreso - totalEgreso) - egreso.Monto) < 0)
-                    return RespuestasService.ErrorModelo(this, $"No puede retirar mas de lo que tiene en ({egreso.Tipo})");
+                    return RespuestasService.ErrorModelo(this, $"No puede retirar mas de lo que tiene en ({egreso.Tipo})", 409);
                     
                 await egresoService.Insertar(egreso);
 
@@ -38,7 +38,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -54,7 +54,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -70,7 +70,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
     }

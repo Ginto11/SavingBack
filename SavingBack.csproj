@@ -25,6 +25,16 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
+  
+    <ItemGroup>
+        <Content Remove="wwwroot/Uploads/Fotos/**" />
+    </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="wwwroot/Uploads/Fotos/default.png">
+			<CopyToPublishDirectory>Always</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
 
   <ItemGroup>
     <Folder Include="Database\Produccion\" />

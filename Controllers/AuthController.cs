@@ -27,7 +27,7 @@ namespace SavingBack.Controllers
                 var usuario = await usuarioService.BuscarPorContrasenaYUsuario(usuarioLogim);
 
                 if (usuario is null)
-                    return RespuestasService.ErrorModelo(this, "Credenciales incorrectas");
+                    return RespuestasService.ErrorModelo(this, "Credenciales incorrectas", 401);
 
                 var token = authService.GenerarToken(usuario);
 
@@ -35,7 +35,7 @@ namespace SavingBack.Controllers
                 
             }catch(Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -46,14 +46,14 @@ namespace SavingBack.Controllers
             try
             {
                 if (string.IsNullOrEmpty(bearerToken) || !bearerToken.StartsWith("Bearer "))
-                    return RespuestasService.ErrorModelo(this, "Token no enviado o mal formado.");
+                    return RespuestasService.ErrorModelo(this, "Token no enviado o mal formado.", 401);
 
                 var tokenJWT = bearerToken.Substring("Bearer ".Length);
 
                 var validacion = authService.ValidarJWT(tokenJWT);
                 if (validacion == null)
                 {
-                    return RespuestasService.ErrorModelo(this, "Token expirado, inicie sesión nuevamente.");
+                    return RespuestasService.ErrorModelo(this, "Token expirado, inicie sesión nuevamente.", 401);
                 }
 
                 return RespuestasService.TokenValido();
@@ -61,7 +61,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
         

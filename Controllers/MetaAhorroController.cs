@@ -29,7 +29,7 @@ namespace SavingBack.Controllers
 
             }catch(Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -46,7 +46,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -61,7 +61,7 @@ namespace SavingBack.Controllers
                 return RespuestasService.Ok(metas);
             }catch(Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -74,14 +74,14 @@ namespace SavingBack.Controllers
                 var meta = await metaAhorroService.ObtenerPorId(id);
 
                 if (meta is null)
-                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada.");
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada.", 404);
 
                 return RespuestasService.Ok(meta);
 
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -98,7 +98,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -111,7 +111,11 @@ namespace SavingBack.Controllers
                 var meta = await metaAhorroService.ObtenerPorId(id);
 
                 if (meta is null)
-                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada");
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada", 404);
+                
+                if (meta.MontoActual is not null)
+                    return RespuestasService.ErrorModelo(this, "La meta actual no se puede eliminar, ya que cuenta con ahorros.", 409);
+
 
                 meta.Estado = "Cancelada";
 
@@ -120,7 +124,7 @@ namespace SavingBack.Controllers
                 return RespuestasService.Ok("Meta cancelada exitosamente.");
             }catch(Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -134,7 +138,7 @@ namespace SavingBack.Controllers
                 var metaEncontrada = await metaAhorroService.ObtenerPorId(id);
 
                 if (metaEncontrada is null)
-                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada");
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada", 404);
 
                 metaEncontrada.MontoObjetivo = meta.MontoObjetivo;
                 metaEncontrada.Nombre = meta.Nombre;
@@ -145,7 +149,23 @@ namespace SavingBack.Controllers
 
             }catch(Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
+            }
+        }
+
+        [HttpGet]
+        [Route("cumplidas/usuario/{id}")]
+        public async Task<ActionResult> ObtenerMetasCumplidasPorUsuarioId(int id, [FromQuery] string estado)
+        {
+            try
+            {
+                var metasCumplidas = await metaAhorroService.MetasCumplidasPorUsuarioId(id, estado);
+
+                return RespuestasService.Ok(metasCumplidas);
+
+            }catch(Exception error)
+            {
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
