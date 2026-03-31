@@ -30,7 +30,7 @@ namespace SavingBack.Controllers
                 return Ok(usuarios);
             }catch(Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -48,7 +48,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -60,14 +60,14 @@ namespace SavingBack.Controllers
                 var usuario = await usuarioService.BuscarPorId(id);
 
                 if (usuario is null)
-                    return RespuestasService.ErrorModelo(this, "Usuario no encontrado");
+                    return RespuestasService.ErrorModelo(this, "Usuario no encontrado", 404);
 
                 return RespuestasService.Ok(usuario);
 
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -79,7 +79,7 @@ namespace SavingBack.Controllers
             {
                 var usuarioExistente = await usuarioService.BuscarEntidadUsuarioPorId(id);
                 if (usuarioExistente is null)
-                    return RespuestasService.ErrorModelo(this, "Usuario no encontrado");
+                    return RespuestasService.ErrorModelo(this, "Usuario no encontrado", 404);
 
                 usuarioExistente.PrimerNombre = usuario.PrimerNombre;
                 usuarioExistente.PrimerApellido = usuario.PrimerApellido;
@@ -103,7 +103,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
     }   

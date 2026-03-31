@@ -1,14 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\Foto121341242555.jpg",
-      "PackagePath": "staticwebassets\\Uploads\\Fotos\\Foto121341242555.jpg"
-    },
-    {
-      "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\Foto121341242555.png",
-      "PackagePath": "staticwebassets\\Uploads\\Fotos\\Foto121341242555.png"
-    },
-    {
       "Id": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\default.png",
       "PackagePath": "staticwebassets\\Uploads\\Fotos\\default.png"
     },

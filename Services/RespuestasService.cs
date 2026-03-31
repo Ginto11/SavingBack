@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SavingBack.Dtos;
 using SavingBack.Models;
 
@@ -68,10 +69,13 @@ namespace SavingBack.Services
             return new ObjectResult(new { codigo = 200, mensaje = "Token valido" }) { StatusCode = 200 };
         }
 
-        public static ActionResult ErrorModelo(ControllerBase controller, string mensaje)
+        public static ActionResult ErrorModelo(ControllerBase controller, string mensaje, int? codigoEstado)
         {
             controller.ModelState.AddModelError("Mensaje: ", mensaje);
-            return controller.ValidationProblem(controller.ModelState);
+            return controller.ValidationProblem(
+                    modelStateDictionary: controller.ModelState,
+                    statusCode: codigoEstado
+                );
         }
     }
 }

@@ -45,12 +45,12 @@ namespace SavingBack.Controllers
                 var meta = await metaAhorroService.ObtenerPorId(ahorroDto.MetaAhorroId);
 
                 if (meta is null)
-                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({ahorroDto.MetaAhorroId}), no encontrada.");
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({ahorroDto.MetaAhorroId}), no encontrada.", 404);
 
                 if ((ahorroDto.Monto + meta.MontoActual) > meta.MontoObjetivo)
                 {
                     var diferencia = meta.MontoObjetivo - meta.MontoActual;
-                    return RespuestasService.ErrorModelo(this, $"Por favor ingrese el valor exacto para cumplir la meta. Serian ${diferencia:N0} pesos.");
+                    return RespuestasService.ErrorModelo(this, $"Por favor ingrese el valor exacto para cumplir la meta. Serian ${diferencia:N0} pesos.", 409);
                 }
 
                 if(meta.MontoActual is null)
@@ -94,7 +94,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -113,7 +113,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -132,7 +132,7 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
 
@@ -151,7 +151,40 @@ namespace SavingBack.Controllers
             }
             catch (Exception error)
             {
-                return RespuestasService.ErrorModelo(this, error.Message);
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<ActionResult> EliminarAhorro(int id)
+        {
+            try
+            {
+                var ahorroABorrar = await ahorroService.BuscarPorId(id);
+
+                if (ahorroABorrar == null)
+                    return RespuestasService.ErrorModelo(this, $"Ahorro no encontrado.", 404);
+
+                var metaPorActualizar = await metaAhorroService.ObtenerPorId(ahorroABorrar.MetaAhorroId);
+
+
+                if (metaPorActualizar == null)
+                    return RespuestasService.ErrorModelo(this, $"Meta no encontrada.", 404);
+
+                if (metaPorActualizar.Estado == "Cumplida")
+                    return RespuestasService.ErrorModelo(this, $"No se puede eliminar un ahorro de una meta cumplida.", 409);
+
+                metaPorActualizar.MontoActual -= ahorroABorrar.Monto;
+
+                await ahorroService.Eliminar(ahorroABorrar);
+                await metaAhorroService.Actualizar(metaPorActualizar);
+
+                return RespuestasService.NoContent();
+
+            }catch(Exception error)
+            {
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
     }

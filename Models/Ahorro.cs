@@ -19,7 +19,7 @@ namespace SavingBack.Models
         [MinLength(1, ErrorMessage = "El campo Descripcion es requerido.")]
         public string? Descripcion { get; set; }
 
-        public int? MetaAhorroId { get; set; }
+        public int MetaAhorroId { get; set; }
         public MetaAhorro? MetaAhorro { get; set; }
     }
 }

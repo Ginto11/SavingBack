@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c+oIOsZMhnJw6Gy2HFMRfgd34aACxDzEyY/Fqpv+P5o=",
+  "Hash": "rz/UcLlujdr/Dm4KVGqtQfPYOubgIDRRazBAM8yRevI=",
   "Source": "SavingBack",
   "BasePath": "_content/SavingBack",
   "Mode": "Default",
@@ -32,46 +32,8 @@
       "AssetTraitName": "",
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Fotos\\default.png"
-    },
-    {
-      "Identity": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\Foto121341242555.jpg",
-      "SourceId": "SavingBack",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\",
-      "BasePath": "_content/SavingBack",
-      "RelativePath": "Uploads/Fotos/Foto121341242555.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Fotos\\Foto121341242555.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\Uploads\\Fotos\\Foto121341242555.png",
-      "SourceId": "SavingBack",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\wwwroot\\",
-      "BasePath": "_content/SavingBack",
-      "RelativePath": "Uploads/Fotos/Foto121341242555.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Uploads\\Fotos\\Foto121341242555.png"
+      "CopyToPublishDirectory": "Always",
+      "OriginalItemSpec": "wwwroot/Uploads/Fotos/default.png"
     }
   ]
 }
