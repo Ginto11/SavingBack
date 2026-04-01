@@ -162,12 +162,12 @@ namespace SavingBack.Database.Migrations
                 columns: new[] { "Id", "Nombre" },
                 values: new object[,]
                 {
-                    { 1, "Alimentación" },
+                    { 1, "Alimentos" },
                     { 2, "Transporte" },
                     { 3, "Salud" },
                     { 4, "Hogar" },
                     { 5, "Servicios" },
-                    { 6, "Educación" },
+                    { 6, "Estudios" },
                     { 7, "Entretenimiento" },
                     { 8, "Mascotas" },
                     { 9, "Ropa" },
