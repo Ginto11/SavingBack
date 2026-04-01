@@ -23,6 +23,7 @@ namespace SavingBack.Services
                     UsuarioId = egreso.UsuarioId,
                     Monto = egreso.Monto,
                     Tipo = egreso.Tipo,
+                    CategoriaGastoId = egreso.CategoriaGastoId
                 };
 
                 context.Add(nuevoEgreso);
@@ -46,7 +47,8 @@ namespace SavingBack.Services
                 var resultado = new TiposEgresosTotales(
                     totales.GetValueOrDefault("Efectivo"),
                     totales.GetValueOrDefault("Nequi"),
-                    totales.GetValueOrDefault("App")
+                    totales.GetValueOrDefault("App"),
+                    totales.GetValueOrDefault("Banco")
                 );
 
                 return resultado;
@@ -68,7 +70,8 @@ namespace SavingBack.Services
                         UsuarioId = egreso.UsuarioId,
                         FechaRegistro = egreso.FechaRegistro,
                         Monto = egreso.Monto,
-                        Tipo = egreso.Tipo
+                        Tipo = egreso.Tipo,
+                        CategoriaGastoId = egreso.CategoriaGastoId
                     })
                     .Where(egreso => egreso.UsuarioId == id)
                     .Take(5)
