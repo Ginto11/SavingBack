@@ -17,5 +17,7 @@ namespace SavingBack.Dtos
         public int Monto { get; set; }
 
         public int CategoriaGastoId { get; set; }
+
+        public string? NombreCategoriaGasto { get; set; }
     }
 }

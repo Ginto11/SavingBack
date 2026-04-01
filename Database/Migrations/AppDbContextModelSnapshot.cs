@@ -174,46 +174,46 @@ namespace SavingBack.Database.Migrations
                         {
                             Id = 1,
                             CategoriaGastoId = 1,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8471),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(164),
                             Monto = 100000,
                             Tipo = "Nequi",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 2,
                             CategoriaGastoId = 4,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8476),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(168),
                             Monto = 8000,
                             Tipo = "App",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 3,
                             CategoriaGastoId = 10,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8479),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(170),
                             Monto = 12000,
                             Tipo = "Efectivo",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 4,
                             CategoriaGastoId = 5,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8482),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(172),
                             Monto = 60000,
                             Tipo = "Efectivo",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 5,
                             CategoriaGastoId = 2,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8484),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(175),
                             Monto = 180000,
                             Tipo = "Banco",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         });
                 });
 
@@ -251,42 +251,42 @@ namespace SavingBack.Database.Migrations
                         new
                         {
                             Id = 1,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8064),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9791),
                             Monto = 10000,
                             Tipo = "Efectivo",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 2,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8067),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9795),
                             Monto = 80000,
                             Tipo = "Nequi",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 3,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8069),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9797),
                             Monto = 120000,
                             Tipo = "App",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 4,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8072),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9799),
                             Monto = 66000,
                             Tipo = "Efectivo",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 5,
-                            FechaRegistro = new DateTime(2026, 4, 1, 8, 25, 20, 901, DateTimeKind.Local).AddTicks(8074),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9801),
                             Monto = 150000,
                             Tipo = "Banco",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         });
                 });
 

@@ -20,7 +20,7 @@ namespace SavingBack.Controllers
         {
             try
             {
-                var categorias = categoriaGastoService.ObtenerCategoriasGastos();
+                var categorias = await categoriaGastoService.ObtenerCategoriasGastos();
 
                 return RespuestasService.Ok(categorias);
             }catch(Exception error)
