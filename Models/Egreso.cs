@@ -13,5 +13,9 @@
         public required int Monto { get; set; }
 
         public Usuario? Usuario { get; set; }
+
+        public required int CategoriaGastoId { get; set; }
+
+        public CategoriaGasto? CategoriaGasto { get; set; }
     }
 }

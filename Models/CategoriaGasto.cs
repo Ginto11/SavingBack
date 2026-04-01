@@ -2,7 +2,7 @@
 {
     public class CategoriaGasto
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public required string Nombre { get; set; }
 

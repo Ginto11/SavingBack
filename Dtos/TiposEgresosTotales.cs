@@ -8,11 +8,14 @@
 
         public int TotalApp { get; set; }
 
-        public TiposEgresosTotales(int efectivo, int nequi, int app)
+        public int TotalBanco { get; set; }
+
+        public TiposEgresosTotales(int efectivo, int nequi, int app, int totalBanco)
         {
             TotalEfectivo = efectivo;
             TotalNequi = nequi;
             TotalApp = app;
+            TotalBanco = totalBanco;
         }
     }
 }
