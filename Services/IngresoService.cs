@@ -51,7 +51,8 @@ namespace SavingBack.Services
                 var resultado = new TiposIngresosTotales(
                     totalesIngresos.GetValueOrDefault("Efectivo") - totalesEgresos.GetValueOrDefault("Efectivo"),
                     totalesIngresos.GetValueOrDefault("Nequi") - totalesEgresos.GetValueOrDefault("Nequi"),
-                    totalesIngresos.GetValueOrDefault("App") - totalesEgresos.GetValueOrDefault("App")
+                    totalesIngresos.GetValueOrDefault("App") - totalesEgresos.GetValueOrDefault("App"),
+                    totalesIngresos.GetValueOrDefault("Banco") - totalesEgresos.GetValueOrDefault("Banco")
                 );
 
                 return resultado;

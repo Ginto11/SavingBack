@@ -12,8 +12,8 @@ using SavingBack.Database;
 namespace SavingBack.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260327043454_ModificandoTablaEgresos")]
-    partial class ModificandoTablaEgresos
+    [Migration("20260401135013_ImplementacionInicial")]
+    partial class ImplementacionInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace SavingBack.Database.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("MetaAhorroId")
+                    b.Property<int>("MetaAhorroId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Monto")
@@ -60,11 +60,11 @@ namespace SavingBack.Database.Migrations
 
             modelBuilder.Entity("SavingBack.Models.CategoriaGasto", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -77,62 +77,62 @@ namespace SavingBack.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1L,
+                            Id = 1,
                             Nombre = "Alimentación"
                         },
                         new
                         {
-                            Id = 2L,
+                            Id = 2,
                             Nombre = "Transporte"
                         },
                         new
                         {
-                            Id = 3L,
+                            Id = 3,
                             Nombre = "Salud"
                         },
                         new
                         {
-                            Id = 4L,
+                            Id = 4,
                             Nombre = "Hogar"
                         },
                         new
                         {
-                            Id = 5L,
+                            Id = 5,
                             Nombre = "Servicios"
                         },
                         new
                         {
-                            Id = 6L,
+                            Id = 6,
                             Nombre = "Educación"
                         },
                         new
                         {
-                            Id = 7L,
+                            Id = 7,
                             Nombre = "Entretenimiento"
                         },
                         new
                         {
-                            Id = 8L,
+                            Id = 8,
                             Nombre = "Mascotas"
                         },
                         new
                         {
-                            Id = 9L,
+                            Id = 9,
                             Nombre = "Ropa"
                         },
                         new
                         {
-                            Id = 10L,
+                            Id = 10,
                             Nombre = "Deudas"
                         },
                         new
                         {
-                            Id = 11L,
+                            Id = 11,
                             Nombre = "Inversiones"
                         },
                         new
                         {
-                            Id = 12L,
+                            Id = 12,
                             Nombre = "Otros"
                         });
                 });
@@ -144,6 +144,9 @@ namespace SavingBack.Database.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoriaGastoId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("datetime2");
@@ -160,45 +163,60 @@ namespace SavingBack.Database.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoriaGastoId");
+
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Egreso", t =>
                         {
-                            t.HasCheckConstraint("CK_Egreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi')");
+                            t.HasCheckConstraint("CK_Egreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco')");
                         });
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9394),
+                            CategoriaGastoId = 1,
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(164),
                             Monto = 100000,
                             Tipo = "Nequi",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 2,
-                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9397),
+                            CategoriaGastoId = 4,
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(168),
                             Monto = 8000,
                             Tipo = "App",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 3,
-                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9399),
+                            CategoriaGastoId = 10,
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(170),
                             Monto = 12000,
                             Tipo = "Efectivo",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 4,
-                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9402),
+                            CategoriaGastoId = 5,
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(172),
                             Monto = 60000,
                             Tipo = "Efectivo",
-                            UsuarioId = 2
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoriaGastoId = 2,
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 987, DateTimeKind.Local).AddTicks(175),
+                            Monto = 180000,
+                            Tipo = "Banco",
+                            UsuarioId = 1
                         });
                 });
 
@@ -229,41 +247,49 @@ namespace SavingBack.Database.Migrations
 
                     b.ToTable("Ingreso", t =>
                         {
-                            t.HasCheckConstraint("CK_Ingreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi')");
+                            t.HasCheckConstraint("CK_Ingreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco')");
                         });
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(8996),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9791),
                             Monto = 10000,
                             Tipo = "Efectivo",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 2,
-                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(8999),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9795),
                             Monto = 80000,
                             Tipo = "Nequi",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 3,
-                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9002),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9797),
                             Monto = 120000,
                             Tipo = "App",
-                            UsuarioId = 2
+                            UsuarioId = 1
                         },
                         new
                         {
                             Id = 4,
-                            FechaRegistro = new DateTime(2026, 3, 26, 23, 34, 53, 63, DateTimeKind.Local).AddTicks(9005),
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9799),
                             Monto = 66000,
                             Tipo = "Efectivo",
-                            UsuarioId = 2
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            FechaRegistro = new DateTime(2026, 4, 1, 8, 50, 12, 986, DateTimeKind.Local).AddTicks(9801),
+                            Monto = 150000,
+                            Tipo = "Banco",
+                            UsuarioId = 1
                         });
                 });
 
@@ -382,7 +408,9 @@ namespace SavingBack.Database.Migrations
                 {
                     b.HasOne("SavingBack.Models.MetaAhorro", "MetaAhorro")
                         .WithMany("Ahorros")
-                        .HasForeignKey("MetaAhorroId");
+                        .HasForeignKey("MetaAhorroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("SavingBack.Models.Usuario", "Usuario")
                         .WithMany()
@@ -397,11 +425,19 @@ namespace SavingBack.Database.Migrations
 
             modelBuilder.Entity("SavingBack.Models.Egreso", b =>
                 {
+                    b.HasOne("SavingBack.Models.CategoriaGasto", "CategoriaGasto")
+                        .WithMany()
+                        .HasForeignKey("CategoriaGastoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SavingBack.Models.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CategoriaGasto");
 
                     b.Navigation("Usuario");
                 });

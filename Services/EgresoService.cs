@@ -71,7 +71,8 @@ namespace SavingBack.Services
                         FechaRegistro = egreso.FechaRegistro,
                         Monto = egreso.Monto,
                         Tipo = egreso.Tipo,
-                        CategoriaGastoId = egreso.CategoriaGastoId
+                        CategoriaGastoId = egreso.CategoriaGastoId,
+                        NombreCategoriaGasto = egreso.CategoriaGasto!.Nombre
                     })
                     .Where(egreso => egreso.UsuarioId == id)
                     .Take(5)
