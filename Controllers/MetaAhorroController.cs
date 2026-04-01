@@ -113,7 +113,7 @@ namespace SavingBack.Controllers
                 if (meta is null)
                     return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada", 404);
                 
-                if (meta.MontoActual is not null)
+                if (meta.MontoActual > 0)
                     return RespuestasService.ErrorModelo(this, "La meta actual no se puede eliminar, ya que cuenta con ahorros.", 409);
 
 
@@ -154,7 +154,7 @@ namespace SavingBack.Controllers
         }
 
         [HttpGet]
-        [Route("cumplidas/usuario/{id}")]
+        [Route("estado/usuario/{id}")]
         public async Task<ActionResult> ObtenerMetasCumplidasPorUsuarioId(int id, [FromQuery] string estado)
         {
             try
