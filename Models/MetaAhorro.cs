@@ -18,7 +18,7 @@ namespace SavingBack.Models
         public decimal MontoObjetivo { get; set; }
 
         [Precision(18, 2)]
-        public decimal? MontoActual { get; set; }
+        public decimal? MontoActual { get; set; } = 0;
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
