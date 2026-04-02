@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using SavingBack.Dtos;
 using SavingBack.Models;
 using SavingBack.Services;
@@ -14,6 +15,25 @@ namespace SavingBack.Controllers
         public MetaAhorroController(MetaAhorroService metaAhorroService) 
         {
             this.metaAhorroService = metaAhorroService;
+        }
+
+        [HttpGet]
+        [Route("busqueda/{id}")]
+        public async Task<ActionResult> BuscarMetaPorNombre([FromQuery] string nombre, int id)
+        {
+            try
+            {
+
+                if (nombre.IsNullOrEmpty())
+                    return RespuestasService.ErrorModelo(this, "El campo Nombre es obligatorio.", 400);
+
+                var metasBuscadas = await metaAhorroService.ObtenerMetaPorNombre(nombre, id);
+
+                return RespuestasService.Ok(metasBuscadas);
+            }catch(Exception error)
+            {
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
+            }
         }
 
         [HttpPost]
@@ -34,7 +54,7 @@ namespace SavingBack.Controllers
         }
 
         [HttpGet]
-        [Route("usuario/{id}")]
+        [Route("usuario/{id}/activas")]
         public async Task<ActionResult> ObtenerMetasPorUsuario(int id)
         {
             try

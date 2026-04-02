@@ -41,6 +41,20 @@ namespace SavingBack.Services
             }
         } 
 
+        public async Task<IEnumerable<MetaAhorro>> ObtenerMetaPorNombre(string nombre, int id)
+        {
+            try
+            {
+                return await context.MetaAhorro
+                    .Where(meta => meta.Nombre.Contains(nombre) && meta.UsuarioId == id)
+                    .ToListAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public async Task<IEnumerable<MetaAhorro>> BuscarTodasLasMetasPorUsuarioId(int id)
         {
             try
