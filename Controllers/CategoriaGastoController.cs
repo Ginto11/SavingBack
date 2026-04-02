@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SavingBack.Services;
 
 namespace SavingBack.Controllers
 {
+    [Authorize]
     [Route("api/categoria-gasto")]
     [ApiController]
     public class CategoriaGastoController : ControllerBase

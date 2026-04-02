@@ -6,6 +6,7 @@ using SavingBack.Services;
 
 namespace SavingBack.Controllers
 {
+    [Authorize]
     [Route("api/ahorros")]
     [ApiController]
     public class AhorroController : ControllerBase
@@ -26,7 +27,6 @@ namespace SavingBack.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult> Agregar(CrearAhorroDto ahorroDto)
         {
             try

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SavingBack.Dtos;
 using SavingBack.Models;
@@ -20,6 +21,7 @@ namespace SavingBack.Controllers
             this.usuarioService = usuarioService;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult> ObtenerTodos()
         {
@@ -52,6 +54,7 @@ namespace SavingBack.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult> ObtenerUsuario(int id)
         {
@@ -71,6 +74,7 @@ namespace SavingBack.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         [Route("{id}")]
         public async Task<ActionResult> ActualizarUsuario(int id, [FromForm] UsuarioDto usuario)

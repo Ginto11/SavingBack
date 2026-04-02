@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SavingBack.Dtos;
 using SavingBack.Services;
 
 namespace SavingBack.Controllers
 {
+    [Authorize]
     [Route("api/egresos")]
     [ApiController]
     public class EgresoController : ControllerBase
