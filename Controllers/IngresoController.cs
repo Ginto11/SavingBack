@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SavingBack.Dtos;
 using SavingBack.Models;
@@ -6,6 +7,7 @@ using SavingBack.Services;
 
 namespace SavingBack.Controllers
 {
+    [Authorize]
     [Route("api/ingresos")]
     [ApiController]
     public class IngresoController : ControllerBase

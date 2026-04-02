@@ -92,12 +92,12 @@ GO
 IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Nombre') AND [object_id] = OBJECT_ID(N'[CategoriaGasto]'))
     SET IDENTITY_INSERT [CategoriaGasto] ON;
 INSERT INTO [CategoriaGasto] ([Id], [Nombre])
-VALUES (1, N'Alimentación'),
+VALUES (1, N'Alimentos'),
 (2, N'Transporte'),
 (3, N'Salud'),
 (4, N'Hogar'),
 (5, N'Servicios'),
-(6, N'Educación'),
+(6, N'Estudios'),
 (7, N'Entretenimiento'),
 (8, N'Mascotas'),
 (9, N'Ropa'),

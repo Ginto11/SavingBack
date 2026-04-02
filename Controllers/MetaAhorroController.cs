@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SavingBack.Dtos;
@@ -7,6 +8,7 @@ using SavingBack.Services;
 
 namespace SavingBack.Controllers
 {
+    [Authorize]
     [Route("api/metas")]
     [ApiController]
     public class MetaAhorroController : ControllerBase
