@@ -27,11 +27,13 @@ namespace SavingBack.Services
             var ahorros = await ObtenerListaAhorroPorDias(usuarioId);
             var ingresos = await ObtenerListaIngresoPorDias(usuarioId);
             var egresos = await ObtenerListaEgresoPorDias(usuarioId);
+            var egresosPorCategoria = await ObtenerListaEgresoPorCategorias(usuarioId);
 
             return new DataGraficas { 
                 ListaAhorroPorDias = ahorros, 
                 ListaIngresoPorDias = ingresos, 
-                ListaEgresoPorDias = egresos 
+                ListaEgresoPorDias = egresos,
+                ListaEgresoPorCategoria = egresosPorCategoria
             };
         }
 
@@ -102,6 +104,20 @@ namespace SavingBack.Services
                     Total = datos.FirstOrDefault(x => x.Dia == dia)?.Total ?? 0
                 })
                 .ToList();
+        }
+
+        public async Task<List<EgresoPorCategorias>> ObtenerListaEgresoPorCategorias(int id)
+        {
+            return await appDbContext.Egreso
+                .Where(i => i.UsuarioId == id && i.FechaRegistro.Month == this.mesActual && i.FechaRegistro.Year == this.anioActual)
+                .GroupBy(i => i.CategoriaGasto!.Nombre)
+                .Select(i => new EgresoPorCategorias
+                {
+                    NombreCategoria = i.Key,
+                    Total = i.Sum(e => e.Monto)
+                })
+                .ToListAsync();
+
         }
     }
 }
