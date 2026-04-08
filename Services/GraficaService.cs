@@ -29,14 +29,70 @@ namespace SavingBack.Services
             var egresos = await ObtenerListaEgresoPorDias(usuarioId);
             var egresosPorCategoria = await ObtenerListaEgresoPorCategorias(usuarioId);
             var metaCumplimientoGraficas = await ObtenerListaMetaCumplimiento(usuarioId);
+            var rentabilidad = await ObtenerListaDeRentabilidad(usuarioId);
 
             return new DataGraficas { 
                 ListaAhorroPorDias = ahorros, 
                 ListaIngresoPorDias = ingresos, 
                 ListaEgresoPorDias = egresos,
                 ListaEgresoPorCategoria = egresosPorCategoria,
-                ListaMetaCumplimiento = metaCumplimientoGraficas
+                ListaMetaCumplimiento = metaCumplimientoGraficas,
+                ListaRentabilidad = rentabilidad
             };
+        }
+
+        public async Task<List<Rentabilidad>> ObtenerListaDeRentabilidad(int id)
+        {
+            var hoy = DateTime.Now;
+
+            var inicioMes = new DateTime(hoy.Year, hoy.Month, 1);
+            var finMes = inicioMes.AddMonths(1);
+
+            var diasDelMes = DateTime.DaysInMonth(hoy.Year, hoy.Month);
+
+            // ingresos
+            var ingresos = appDbContext.Ingreso
+                .Where(i => i.UsuarioId == id &&
+                            i.FechaRegistro >= inicioMes &&
+                            i.FechaRegistro < finMes)
+                .GroupBy(i => i.FechaRegistro.Day)
+                .Select(g => new {
+                    Dia = g.Key,
+                    Total = g.Sum(x => x.Monto)
+                });
+
+            // egresos
+            var egresos = appDbContext.Egreso
+                .Where(e => e.UsuarioId == id &&
+                            e.FechaRegistro >= inicioMes &&
+                            e.FechaRegistro < finMes)
+                .GroupBy(e => e.FechaRegistro.Day)
+                .Select(g => new {
+                    Dia = g.Key,
+                    Total = g.Sum(x => x.Monto)
+                });
+
+            // ejecutar consultas
+            var ingresosList = await ingresos.ToListAsync();
+            var egresosList = await egresos.ToListAsync();
+
+            // convertir a diccionario (más eficiente)
+            var ingresosDict = ingresosList.ToDictionary(x => x.Dia, x => x.Total);
+            var egresosDict = egresosList.ToDictionary(x => x.Dia, x => x.Total);
+
+            var diaActual = DateTime.Now.Day;
+
+            // resultado final con días en 0
+            return Enumerable.Range(1, diaActual)
+                .Select(dia => new Rentabilidad
+                {
+                    Dia = dia,
+                    Diferencia =
+                        (ingresosDict.ContainsKey(dia) ? ingresosDict[dia] : 0)
+                      - (egresosDict.ContainsKey(dia) ? egresosDict[dia] : 0)
+                })
+                .OrderBy(x => x.Dia)
+                .ToList();
         }
 
         public async Task<List<MetaCumplimientoGrafica>> ObtenerListaMetaCumplimiento(int id)
