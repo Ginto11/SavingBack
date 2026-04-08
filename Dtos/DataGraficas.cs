@@ -9,6 +9,17 @@
         public List<EgresoPorDias>? ListaEgresoPorDias { get; set; }
 
         public List<EgresoPorCategorias>? ListaEgresoPorCategoria { get; set; }
+
+        public List<MetaCumplimientoGrafica>? ListaMetaCumplimiento { get; set; }
+    }
+
+    public class MetaCumplimientoGrafica
+    {
+        public required string NombreMeta { get; set; }
+
+        public decimal? MontoActual { get; set; }
+
+        public decimal MontoObjetivo { get; set; }
     }
 
     public class EgresoPorCategorias

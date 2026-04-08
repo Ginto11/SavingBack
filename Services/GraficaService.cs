@@ -28,13 +28,28 @@ namespace SavingBack.Services
             var ingresos = await ObtenerListaIngresoPorDias(usuarioId);
             var egresos = await ObtenerListaEgresoPorDias(usuarioId);
             var egresosPorCategoria = await ObtenerListaEgresoPorCategorias(usuarioId);
+            var metaCumplimientoGraficas = await ObtenerListaMetaCumplimiento(usuarioId);
 
             return new DataGraficas { 
                 ListaAhorroPorDias = ahorros, 
                 ListaIngresoPorDias = ingresos, 
                 ListaEgresoPorDias = egresos,
-                ListaEgresoPorCategoria = egresosPorCategoria
+                ListaEgresoPorCategoria = egresosPorCategoria,
+                ListaMetaCumplimiento = metaCumplimientoGraficas
             };
+        }
+
+        public async Task<List<MetaCumplimientoGrafica>> ObtenerListaMetaCumplimiento(int id)
+        {
+            return await appDbContext.MetaAhorro
+                .Where(meta => meta.UsuarioId == id && meta.Estado != "Cumplida")
+                .Select(meta => new MetaCumplimientoGrafica
+                {
+                    NombreMeta = meta.Nombre,
+                    MontoActual = meta.MontoActual ?? 0,
+                    MontoObjetivo = meta.MontoObjetivo
+                })
+                .ToListAsync();
         }
 
         public async Task<List<AhorroPorDias>> ObtenerListaAhorroPorDias(int id)
