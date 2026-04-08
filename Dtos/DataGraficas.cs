@@ -11,6 +11,15 @@
         public List<EgresoPorCategorias>? ListaEgresoPorCategoria { get; set; }
 
         public List<MetaCumplimientoGrafica>? ListaMetaCumplimiento { get; set; }
+
+        public List<Rentabilidad>? ListaRentabilidad { get; set; }
+    }
+
+    public class Rentabilidad
+    {
+        public int Dia { get; set; }
+
+        public decimal Diferencia { get; set; }
     }
 
     public class MetaCumplimientoGrafica
