@@ -76,13 +76,13 @@ namespace SavingBack.Services
             var ingresosList = await ingresos.ToListAsync();
             var egresosList = await egresos.ToListAsync();
 
-            // convertir a diccionario (más eficiente)
+            // convertir a diccionario
             var ingresosDict = ingresosList.ToDictionary(x => x.Dia, x => x.Total);
             var egresosDict = egresosList.ToDictionary(x => x.Dia, x => x.Total);
 
             var diaActual = DateTime.Now.Day;
 
-            // resultado final con días en 0
+            // resultado final
             return Enumerable.Range(1, diaActual)
                 .Select(dia => new Rentabilidad
                 {

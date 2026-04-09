@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SavingBack.Services;
 
@@ -15,6 +16,7 @@ namespace SavingBack.Controllers
             this.graficaService = graficaService;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("{id}")]
         public async Task<ActionResult> ObtenerData(int id)
