@@ -158,6 +158,8 @@ namespace SavingBack.Controllers.V1
         {
             try
             {
+                if (meta.Nombre.IsNullOrEmpty())
+                    return RespuestasService.ErrorModelo(this, "El campo Nombre es requerido.", 400);
 
                 var metaEncontrada = await metaAhorroService.ObtenerPorId(id);
 

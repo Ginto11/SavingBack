@@ -18,9 +18,13 @@ namespace SavingBack.Controllers.V1
         private readonly CorreoService correoService;
         private readonly UsuarioService usuarioService;
         private readonly IHostEnvironment environment;
+        private readonly EgresoService egresoService;
+        private readonly IngresoService ingresoService;
 
-        public AhorroController(IHostEnvironment environment, AhorroService ahorroService, MetaAhorroService metaAhorroService, CorreoService correoService, UsuarioService usuarioService)
-        {   
+        public AhorroController(IngresoService ingresoService, EgresoService egresoService, IHostEnvironment environment, AhorroService ahorroService, MetaAhorroService metaAhorroService, CorreoService correoService, UsuarioService usuarioService)
+        {
+            this.ingresoService = ingresoService;
+            this.egresoService = egresoService;
             this.metaAhorroService = metaAhorroService;
             this.ahorroService = ahorroService;
             this.correoService = correoService;
@@ -35,14 +39,26 @@ namespace SavingBack.Controllers.V1
             {
                 var rol = User.FindFirst("Rol")?.Value;
                 var usuario = await usuarioService.BuscarPorId(ahorroDto.UsuarioId);
+                var totalIngreso = await ingresoService.BuscarTotalIngresoEnTipo(ahorroDto.TipoAhorro, ahorroDto.UsuarioId);
+                var totalEgreso = await egresoService.BuscarTotalEgresoEnTipo(ahorroDto.TipoAhorro, ahorroDto.UsuarioId);
 
                 var ahorro = new Ahorro
                 {
                     UsuarioId = ahorroDto.UsuarioId,
                     Descripcion = ahorroDto.Descripcion,
                     MetaAhorroId = ahorroDto.MetaAhorroId,
-                    Monto = ahorroDto.Monto
+                    Monto = ahorroDto.Monto,
+                    TipoAhorro = ahorroDto.TipoAhorro
                 };
+
+                var egreso = new EgresoDto
+                {
+                    Monto = Decimal.ToInt32(ahorroDto.Monto),
+                    CategoriaGastoId = 13,
+                    Tipo = ahorroDto.TipoAhorro,
+                    UsuarioId = ahorroDto.UsuarioId
+                };
+
 
                 var meta = await metaAhorroService.ObtenerPorId(ahorroDto.MetaAhorroId);
 
@@ -55,16 +71,24 @@ namespace SavingBack.Controllers.V1
                     return RespuestasService.ErrorModelo(this, $"Por favor ingrese el valor exacto para cumplir la meta. Serian ${diferencia:N0} pesos.", 409);
                 }
 
-                if(meta.MontoActual is null)
+                if (ahorroDto.TipoAhorro == "")
+                    return RespuestasService.ErrorModelo(this, "El campo Tipo Ahorro es requerido.", 400);
+
+                if (((totalIngreso - totalEgreso) - ahorroDto.Monto) < 0)
+                    return RespuestasService.ErrorModelo(this, $"Fondos insuficientes en ({ahorroDto.TipoAhorro})", 409);
+
+                if (meta.MontoActual is null)
                 {
                     meta.MontoActual = ahorro.Monto;
+                    await egresoService.Insertar(egreso);
                 } 
                 else
                 {
                     meta.MontoActual += ahorro.Monto;
+                    await egresoService.Insertar(egreso);
                 }
 
-                if(meta.MontoActual >= meta.MontoObjetivo)
+                if (meta.MontoActual >= meta.MontoObjetivo)
                 {
                     meta.Estado = "Cumplida";
                 }

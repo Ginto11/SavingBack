@@ -65,7 +65,8 @@ namespace SavingBack.Services
             var egresos = appDbContext.Egreso
                 .Where(e => e.UsuarioId == id &&
                             e.FechaRegistro >= inicioMes &&
-                            e.FechaRegistro < finMes)
+                            e.FechaRegistro < finMes &&
+                            e.CategoriaGastoId != 13)
                 .GroupBy(e => e.FechaRegistro.Day)
                 .Select(g => new {
                     Dia = g.Key,
@@ -157,7 +158,7 @@ namespace SavingBack.Services
         public async Task<List<EgresoPorDias>> ObtenerListaEgresoPorDias(int id)
         {
             var datos = await appDbContext.Egreso
-                .Where(i => i.UsuarioId == id && i.FechaRegistro.Month == this.mesActual && i.FechaRegistro.Year == this.anioActual)
+                .Where(i => i.UsuarioId == id && i.FechaRegistro.Month == this.mesActual && i.FechaRegistro.Year == this.anioActual && i.CategoriaGastoId != 13)
                 .GroupBy(i => i.FechaRegistro.Day)
                 .Select(i => new EgresoPorDias
                 {
@@ -180,7 +181,7 @@ namespace SavingBack.Services
         public async Task<List<EgresoPorCategorias>> ObtenerListaEgresoPorCategorias(int id)
         {
             return await appDbContext.Egreso
-                .Where(i => i.UsuarioId == id && i.FechaRegistro.Month == this.mesActual && i.FechaRegistro.Year == this.anioActual)
+                .Where(i => i.UsuarioId == id && i.FechaRegistro.Month == this.mesActual && i.FechaRegistro.Year == this.anioActual && i.CategoriaGastoId != 13)
                 .GroupBy(i => i.CategoriaGasto!.Nombre)
                 .Select(i => new EgresoPorCategorias
                 {

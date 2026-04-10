@@ -16,11 +16,15 @@ namespace SavingBack.Controllers.V1
     {
         private readonly UsuarioService usuarioService;
         private readonly Utilidad utilidadService;
+        private readonly IConfiguration config;
+        private readonly IHostEnvironment environment;
 
-        public UsuarioController(UsuarioService usuarioService, Utilidad utilidadService)
+        public UsuarioController(UsuarioService usuarioService, Utilidad utilidadService, IConfiguration config, IHostEnvironment environment)
         {
             this.utilidadService = utilidadService;
             this.usuarioService = usuarioService;
+            this.config = config;
+            this.environment = environment;
         }
 
         [Authorize]
@@ -96,11 +100,13 @@ namespace SavingBack.Controllers.V1
 
                 if (usuario.NuevaFoto is not null)
                 {
+
                     var nombreFoto = $"Foto{usuario.Cedula}{Path.GetExtension(usuario.NuevaFoto!.FileName)}";
                     var ruta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", "Fotos", nombreFoto);
                     using var stream = new FileStream(ruta, FileMode.Create);
                     usuarioExistente.FotoPerfil = $"/Uploads/Fotos/{nombreFoto}";
                     await usuario.NuevaFoto!.CopyToAsync(stream);
+
                 }
 
                 await usuarioService.Actualizar(usuarioExistente);

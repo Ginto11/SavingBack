@@ -5,6 +5,10 @@ C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Ou
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\SavingBack.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\SavingBack.runtimeconfig.json
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\SavingBack.pdb
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Asp.Versioning.Abstractions.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Asp.Versioning.Http.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Asp.Versioning.Mvc.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Asp.Versioning.Mvc.ApiExplorer.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Azure.Core.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\ClosedXML.dll
