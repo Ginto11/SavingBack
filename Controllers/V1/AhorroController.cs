@@ -71,6 +71,9 @@ namespace SavingBack.Controllers.V1
                     return RespuestasService.ErrorModelo(this, $"Por favor ingrese el valor exacto para cumplir la meta. Serian ${diferencia:N0} pesos.", 409);
                 }
 
+                if (ahorroDto.TipoAhorro == "")
+                    return RespuestasService.ErrorModelo(this, "El campo Tipo Ahorro es requerido.", 400);
+
                 if (((totalIngreso - totalEgreso) - ahorroDto.Monto) < 0)
                     return RespuestasService.ErrorModelo(this, $"Fondos insuficientes en ({ahorroDto.TipoAhorro})", 409);
 
