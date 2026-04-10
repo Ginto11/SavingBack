@@ -21,5 +21,7 @@ namespace SavingBack.Models
 
         public int MetaAhorroId { get; set; }
         public MetaAhorro? MetaAhorro { get; set; }
+
+        public required string TipoAhorro { get; set; }
     }
 }

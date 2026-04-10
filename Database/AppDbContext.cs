@@ -28,6 +28,9 @@ namespace SavingBack.Database
         {
             base.OnModelCreating(model);
 
+            model.Entity<Ahorro>()
+                .ToTable(tabla => tabla.HasCheckConstraint("CK_Ahorro_TipoAhorro", "[TipoAhorro] IN ('Efectivo', 'Nequi', 'Banco')"));
+
             model.Entity<Ingreso>()
                 .ToTable(tabla => tabla.HasCheckConstraint("CK_Ingreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco')"));
 
@@ -79,7 +82,8 @@ namespace SavingBack.Database
                 new CategoriaGasto { Id = 9, Nombre = "Ropa" },
                 new CategoriaGasto { Id = 10, Nombre = "Deudas" },
                 new CategoriaGasto { Id = 11, Nombre = "Inversiones" },
-                new CategoriaGasto { Id = 12, Nombre = "Otros" }
+                new CategoriaGasto { Id = 12, Nombre = "Otros" },
+                new CategoriaGasto { Id = 13, Nombre = "Movimiento Interno"}
             );
 
             model.Entity<Usuario>().ToTable(t => t.HasCheckConstraint("CK_Usuario_Rol", "Rol IN ('Cliente', 'Admin')"));

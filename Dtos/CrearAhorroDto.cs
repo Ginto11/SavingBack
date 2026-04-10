@@ -10,5 +10,7 @@
         public string? Descripcion { get; set; }
 
         public int MetaAhorroId { get; set; }
+
+        public required string TipoAhorro { get; set; }
     }
 }
