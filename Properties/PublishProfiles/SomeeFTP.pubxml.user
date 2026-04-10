@@ -5,7 +5,7 @@
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvulTf8D8AEKXvnMxJC44wwAAAAACAAAAAAAQZgAAAAEAACAAAAAQ3elnMaAhJVqtV3e0Fgs8GUgt7hh/9XQWWaJmHV9e+gAAAAAOgAAAAAIAACAAAAB4Eu4P0LyrP+L5il5JPqX771cVtUClVdceyhweQkwF0SAAAACEXruCKn1FXMplIq897MQZHwRbht2igSSUj4Zvfr4I9EAAAAAFtcmcJ8url86IL5dFaign2V4ZAPJ7JRf0yZ8nOota+5t0UvGQZoaoPs8ncPfUkRwNwJk3BF183W5ZV9s8DAdx</EncryptedPassword>
     <_PublishTargetUrl>ftp://SavingBack.somee.com/www.SavingBack.somee.com</_PublishTargetUrl>
-    <History>True|2026-04-08T15:44:40.1991565Z||;True|2026-04-07T23:30:04.2949876-05:00||;True|2026-04-06T14:56:45.6756554-05:00||;True|2026-04-05T19:58:24.7500191-05:00||;False|2026-04-05T19:55:20.7610661-05:00||;True|2026-04-02T15:30:48.8627821-05:00||;True|2026-04-02T00:35:40.3199060-05:00||;True|2026-04-01T12:57:56.8971812-05:00||;True|2026-04-01T12:09:23.4872496-05:00||;True|2026-04-01T11:53:07.8202576-05:00||;True|2026-04-01T11:36:20.9218692-05:00||;True|2026-03-31T14:35:20.9979672-05:00||;True|2026-03-28T19:06:02.5156809-05:00||;True|2026-03-28T14:12:20.5389265-05:00||;True|2026-03-28T14:03:51.1092610-05:00||;True|2026-03-28T00:55:27.6052612-05:00||;True|2026-03-27T11:58:55.9662627-05:00||;True|2026-03-27T00:15:50.6495109-05:00||;True|2026-03-26T22:20:27.0613826-05:00||;True|2026-03-26T01:15:13.4751688-05:00||;True|2026-03-23T19:01:26.4702666-05:00||;True|2025-12-23T21:15:00.0684370-05:00||;True|2025-12-18T22:58:56.7313487-05:00||;True|2025-12-18T19:08:55.5865486-05:00||;</History>
+    <History>True|2026-04-09T04:11:39.2382402Z||;True|2026-04-08T10:44:40.1991565-05:00||;True|2026-04-07T23:30:04.2949876-05:00||;True|2026-04-06T14:56:45.6756554-05:00||;True|2026-04-05T19:58:24.7500191-05:00||;False|2026-04-05T19:55:20.7610661-05:00||;True|2026-04-02T15:30:48.8627821-05:00||;True|2026-04-02T00:35:40.3199060-05:00||;True|2026-04-01T12:57:56.8971812-05:00||;True|2026-04-01T12:09:23.4872496-05:00||;True|2026-04-01T11:53:07.8202576-05:00||;True|2026-04-01T11:36:20.9218692-05:00||;True|2026-03-31T14:35:20.9979672-05:00||;True|2026-03-28T19:06:02.5156809-05:00||;True|2026-03-28T14:12:20.5389265-05:00||;True|2026-03-28T14:03:51.1092610-05:00||;True|2026-03-28T00:55:27.6052612-05:00||;True|2026-03-27T11:58:55.9662627-05:00||;True|2026-03-27T00:15:50.6495109-05:00||;True|2026-03-26T22:20:27.0613826-05:00||;True|2026-03-26T01:15:13.4751688-05:00||;True|2026-03-23T19:01:26.4702666-05:00||;True|2025-12-23T21:15:00.0684370-05:00||;True|2025-12-18T22:58:56.7313487-05:00||;True|2025-12-18T19:08:55.5865486-05:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -21,7 +21,7 @@
       <publishTime>11/30/2025 22:49:39</publishTime>
     </File>
     <File Include="appsettings.production.json">
-      <publishTime>04/08/2026 10:41:59</publishTime>
+      <publishTime>04/08/2026 23:08:46</publishTime>
     </File>
     <File Include="Azure.Core.dll">
       <publishTime>07/15/2025 11:24:30</publishTime>
@@ -29,14 +29,29 @@
     <File Include="Azure.Identity.dll">
       <publishTime>07/10/2025 19:17:46</publishTime>
     </File>
+    <File Include="ClosedXML.dll">
+      <publishTime>05/14/2025 15:51:12</publishTime>
+    </File>
+    <File Include="ClosedXML.Parser.dll">
+      <publishTime>04/03/2025 18:11:52</publishTime>
+    </File>
     <File Include="cs/Microsoft.Data.SqlClient.resources.dll">
       <publishTime>11/12/2025 15:29:14</publishTime>
     </File>
     <File Include="de/Microsoft.Data.SqlClient.resources.dll">
       <publishTime>11/12/2025 15:33:26</publishTime>
     </File>
+    <File Include="DocumentFormat.OpenXml.dll">
+      <publishTime>03/18/2026 13:35:08</publishTime>
+    </File>
+    <File Include="DocumentFormat.OpenXml.Framework.dll">
+      <publishTime>03/18/2026 13:35:06</publishTime>
+    </File>
     <File Include="es/Microsoft.Data.SqlClient.resources.dll">
       <publishTime>11/12/2025 15:28:34</publishTime>
+    </File>
+    <File Include="ExcelNumberFormat.dll">
+      <publishTime>10/02/2020 03:42:28</publishTime>
     </File>
     <File Include="fr/Microsoft.Data.SqlClient.resources.dll">
       <publishTime>11/12/2025 15:29:52</publishTime>
@@ -125,6 +140,9 @@
     <File Include="pt-BR/Microsoft.Data.SqlClient.resources.dll">
       <publishTime>11/12/2025 15:29:28</publishTime>
     </File>
+    <File Include="RBush.dll">
+      <publishTime>11/18/2024 10:48:48</publishTime>
+    </File>
     <File Include="ru/Microsoft.Data.SqlClient.resources.dll">
       <publishTime>11/12/2025 15:28:34</publishTime>
     </File>
@@ -150,19 +168,22 @@
       <publishTime>09/16/2024 18:10:56</publishTime>
     </File>
     <File Include="SavingBack.deps.json">
-      <publishTime>04/08/2026 10:41:53</publishTime>
+      <publishTime>04/08/2026 23:08:39</publishTime>
     </File>
     <File Include="SavingBack.dll">
-      <publishTime>04/08/2026 10:41:43</publishTime>
+      <publishTime>04/08/2026 23:08:07</publishTime>
     </File>
     <File Include="SavingBack.exe">
-      <publishTime>04/08/2026 10:41:44</publishTime>
+      <publishTime>04/08/2026 23:08:08</publishTime>
     </File>
     <File Include="SavingBack.pdb">
-      <publishTime>04/08/2026 10:41:43</publishTime>
+      <publishTime>04/08/2026 23:08:07</publishTime>
     </File>
     <File Include="SavingBack.runtimeconfig.json">
-      <publishTime>03/23/2026 18:57:19</publishTime>
+      <publishTime>04/08/2026 23:08:11</publishTime>
+    </File>
+    <File Include="SixLabors.Fonts.dll">
+      <publishTime>08/11/2023 07:04:44</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.Swagger.dll">
       <publishTime>05/21/2024 11:42:50</publishTime>
@@ -185,6 +206,9 @@
     <File Include="System.IdentityModel.Tokens.Jwt.dll">
       <publishTime>07/19/2024 18:28:12</publishTime>
     </File>
+    <File Include="System.IO.Packaging.dll">
+      <publishTime>09/16/2024 18:09:52</publishTime>
+    </File>
     <File Include="System.Memory.Data.dll">
       <publishTime>09/16/2024 18:10:06</publishTime>
     </File>
@@ -198,7 +222,7 @@
       <publishTime>11/12/2025 15:28:08</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>04/08/2026 10:41:59</publishTime>
+      <publishTime>04/08/2026 23:08:46</publishTime>
     </File>
     <File Include="wwwroot/Uploads/Fotos/9910e315-93ef-455a-b8ac-aad1cbd65585 + .jpg">
       <publishTime>12/18/2025 22:53:49</publishTime>

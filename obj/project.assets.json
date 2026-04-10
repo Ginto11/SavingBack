@@ -2,6 +2,73 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "Asp.Versioning.Abstractions/8.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Asp.Versioning.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Asp.Versioning.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Asp.Versioning.Http/8.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Asp.Versioning.Abstractions": "8.1.0"
+        },
+        "compile": {
+          "lib/net8.0/Asp.Versioning.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Asp.Versioning.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Asp.Versioning.Mvc/8.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Asp.Versioning.Http": "8.1.1"
+        },
+        "compile": {
+          "lib/net8.0/Asp.Versioning.Mvc.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Asp.Versioning.Mvc.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Asp.Versioning.Mvc.ApiExplorer/8.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Asp.Versioning.Mvc": "8.1.1"
+        },
+        "compile": {
+          "lib/net8.0/Asp.Versioning.Mvc.ApiExplorer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Asp.Versioning.Mvc.ApiExplorer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Azure.Core/1.47.1": {
         "type": "package",
         "dependencies": {
@@ -1534,6 +1601,74 @@
     }
   },
   "libraries": {
+    "Asp.Versioning.Abstractions/8.1.0": {
+      "sha512": "mpeNZyMdvrHztJwR1sXIUQ+3iioEU97YMBnFA9WLbsPOYhGwDJnqJMmEd8ny7kcmS9OjTHoEuX/bSXXY3brIFA==",
+      "type": "package",
+      "path": "asp.versioning.abstractions/8.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "asp.versioning.abstractions.8.1.0.nupkg.sha512",
+        "asp.versioning.abstractions.nuspec",
+        "icon.png",
+        "lib/net8.0/Asp.Versioning.Abstractions.dll",
+        "lib/net8.0/Asp.Versioning.Abstractions.xml",
+        "lib/netstandard1.0/Asp.Versioning.Abstractions.dll",
+        "lib/netstandard1.0/Asp.Versioning.Abstractions.xml",
+        "lib/netstandard2.0/Asp.Versioning.Abstractions.dll",
+        "lib/netstandard2.0/Asp.Versioning.Abstractions.xml"
+      ]
+    },
+    "Asp.Versioning.Http/8.1.1": {
+      "sha512": "1D/Mzq1MSUSQe1eCY6GeEsu+tIlpzoWZxZkhlcw/uvtVoTrwO+BMl0fSj/XX8oZN1DutWTZqHDHgyDRq+IeSdQ==",
+      "type": "package",
+      "path": "asp.versioning.http/8.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "asp.versioning.http.8.1.1.nupkg.sha512",
+        "asp.versioning.http.nuspec",
+        "icon.png",
+        "lib/net8.0/Asp.Versioning.Http.dll",
+        "lib/net8.0/Asp.Versioning.Http.xml"
+      ]
+    },
+    "Asp.Versioning.Mvc/8.1.1": {
+      "sha512": "mkJv6eAdlbHbqTdrUcfEYFoZuGL6HoR7O+Lfsvivixp7N5BNhfCFPPOwsBzdIiH1qzdJXyJf+C+DZ08j27PMPg==",
+      "type": "package",
+      "path": "asp.versioning.mvc/8.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "asp.versioning.mvc.8.1.1.nupkg.sha512",
+        "asp.versioning.mvc.nuspec",
+        "icon.png",
+        "lib/net8.0/Asp.Versioning.Mvc.dll",
+        "lib/net8.0/Asp.Versioning.Mvc.xml"
+      ]
+    },
+    "Asp.Versioning.Mvc.ApiExplorer/8.1.1": {
+      "sha512": "u8PrP6CjmurgIh0EDfg8Gc/GdpDHgkbv8OLKdxQcWb5W4sp0i9BcdbQlLvRcATjNIJUyr7ZmqXjmdsFfqnuy0g==",
+      "type": "package",
+      "path": "asp.versioning.mvc.apiexplorer/8.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "asp.versioning.mvc.apiexplorer.8.1.1.nupkg.sha512",
+        "asp.versioning.mvc.apiexplorer.nuspec",
+        "icon.png",
+        "lib/net8.0/Asp.Versioning.Mvc.ApiExplorer.dll",
+        "lib/net8.0/Asp.Versioning.Mvc.ApiExplorer.xml"
+      ]
+    },
     "Azure.Core/1.47.1": {
       "sha512": "oPcncSsDHuxB8SC522z47xbp2+ttkcKv2YZ90KXhRKN0YQd2+7l1UURT9EBzUNEXtkLZUOAB5xbByMTrYRh3yA==",
       "type": "package",
@@ -4069,6 +4204,8 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Asp.Versioning.Mvc >= 8.1.1",
+      "Asp.Versioning.Mvc.ApiExplorer >= 8.1.1",
       "ClosedXML >= 0.105.0",
       "DocumentFormat.OpenXml >= 3.5.1",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.1",
@@ -4129,6 +4266,14 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Asp.Versioning.Mvc": {
+            "target": "Package",
+            "version": "[8.1.1, )"
+          },
+          "Asp.Versioning.Mvc.ApiExplorer": {
+            "target": "Package",
+            "version": "[8.1.1, )"
+          },
           "ClosedXML": {
             "target": "Package",
             "version": "[0.105.0, )"

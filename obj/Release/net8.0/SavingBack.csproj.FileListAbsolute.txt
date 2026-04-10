@@ -303,3 +303,15 @@ C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\staticweb
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\staticwebassets\msbuild.buildMultiTargeting.SavingBack.props
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\staticwebassets\msbuild.buildTransitive.SavingBack.props
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\staticwebassets.pack.json
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\ClosedXML.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\ClosedXML.Parser.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\DocumentFormat.OpenXml.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\DocumentFormat.OpenXml.Framework.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\ExcelNumberFormat.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\RBush.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\SixLabors.Fonts.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\System.IO.Packaging.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\Asp.Versioning.Abstractions.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\Asp.Versioning.Http.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\Asp.Versioning.Mvc.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\bin\Release\net8.0\Asp.Versioning.Mvc.ApiExplorer.dll
