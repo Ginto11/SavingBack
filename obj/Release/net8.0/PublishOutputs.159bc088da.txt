@@ -7,6 +7,11 @@ C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Ou
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\SavingBack.pdb
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Azure.Core.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\ClosedXML.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\ClosedXML.Parser.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\DocumentFormat.OpenXml.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\DocumentFormat.OpenXml.Framework.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\ExcelNumberFormat.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Microsoft.Bcl.Cryptography.dll
@@ -29,6 +34,8 @@ C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Ou
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\RBush.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\SixLabors.Fonts.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -36,6 +43,7 @@ C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Ou
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\System.Diagnostics.EventLog.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\System.IO.Packaging.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\System.Security.Cryptography.Pkcs.dll
 C:\Users\EQUIPO\Documentos\Proyectos.NET\SavingBack\obj\Release\net8.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll

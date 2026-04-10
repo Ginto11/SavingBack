@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "/wHX36p5PfI=",
+  "dgSpecHash": "hnEhWM77eOM=",
   "success": true,
   "projectFilePath": "C:\\Users\\EQUIPO\\Documentos\\Proyectos.NET\\SavingBack\\SavingBack.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\EQUIPO\\.nuget\\packages\\asp.versioning.abstractions\\8.1.0\\asp.versioning.abstractions.8.1.0.nupkg.sha512",
+    "C:\\Users\\EQUIPO\\.nuget\\packages\\asp.versioning.http\\8.1.1\\asp.versioning.http.8.1.1.nupkg.sha512",
+    "C:\\Users\\EQUIPO\\.nuget\\packages\\asp.versioning.mvc\\8.1.1\\asp.versioning.mvc.8.1.1.nupkg.sha512",
+    "C:\\Users\\EQUIPO\\.nuget\\packages\\asp.versioning.mvc.apiexplorer\\8.1.1\\asp.versioning.mvc.apiexplorer.8.1.1.nupkg.sha512",
     "C:\\Users\\EQUIPO\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\EQUIPO\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
     "C:\\Users\\EQUIPO\\.nuget\\packages\\closedxml\\0.105.0\\closedxml.0.105.0.nupkg.sha512",
