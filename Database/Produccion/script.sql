@@ -165,3 +165,27 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [Ahorro] ADD [TipoAhorro] nvarchar(max) NOT NULL DEFAULT N'Efectivo';
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Nombre') AND [object_id] = OBJECT_ID(N'[CategoriaGasto]'))
+    SET IDENTITY_INSERT [CategoriaGasto] ON;
+INSERT INTO [CategoriaGasto] ([Id], [Nombre])
+VALUES (13, N'Movimiento Interno');
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Nombre') AND [object_id] = OBJECT_ID(N'[CategoriaGasto]'))
+    SET IDENTITY_INSERT [CategoriaGasto] OFF;
+GO
+
+ALTER TABLE [Ahorro] ADD CONSTRAINT [CK_Ahorro_TipoAhorro] CHECK ([TipoAhorro] IN ('Efectivo', 'Nequi', 'Banco'));
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260410213530_AñadiendoLogicaEnAhorro', N'8.0.1');
+GO
+
+COMMIT;
+GO
+
