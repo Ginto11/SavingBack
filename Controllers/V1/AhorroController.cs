@@ -126,15 +126,17 @@ namespace SavingBack.Controllers.V1
 
         [HttpGet]
         [Route("usuario/{id}")]
-        public async Task<ActionResult> TodosPorUsuarioId(int id)
+        public async Task<ActionResult> TodosPorUsuarioId(int paginaActual, int tamanoPagina, int id)
         {
             try
             {
+                if (paginaActual == 0)
+                    return RespuestasService.ErrorModelo(this, "El numero de pagina debe ser mayor a 0", 409);
 
-                var ahorros = await ahorroService.ObtenerTodosPorUsuarioId(id);
 
+                var resultadoPagina = await ahorroService.ObtenerTodosLosAhorrosPaginadosPorUsuarioId(id, paginaActual, tamanoPagina);
 
-                return RespuestasService.Ok(ahorros);
+                return RespuestasService.Ok(resultadoPagina);
 
             }
             catch (Exception error)
