@@ -215,5 +215,21 @@ namespace SavingBack.Controllers.V1
                 return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
+
+        [HttpGet]
+        [Route("descripcion/{id}")]
+        public async Task<ActionResult> ObtenerAhorrosPorDescripcion(int paginaActual, int tamanoPagina, int id, string descripcion)
+        {
+            try
+            {
+                var ahorros = await ahorroService.ObtenerAhorrosPorDescripcionPaginadosPorUsuarioId(id, paginaActual, tamanoPagina, descripcion);
+
+                return RespuestasService.Ok(ahorros);
+            }
+            catch(Exception error)
+            {
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
+            }
+        }
     }
 }
