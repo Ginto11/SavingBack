@@ -16,10 +16,12 @@ namespace SavingBack.Controllers.V1
     {
 
         private readonly IngresoService ingresoService;
+        private readonly EgresoService egresoService;
 
-        public IngresoController(IngresoService ingresoService)
+        public IngresoController(IngresoService ingresoService, EgresoService egresoService)
         {
             this.ingresoService = ingresoService;
+            this.egresoService = egresoService;
         }
 
         [HttpPost]
@@ -63,6 +65,33 @@ namespace SavingBack.Controllers.V1
                 return RespuestasService.Ok(lista);
             }
             catch (Exception error)
+            {
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<ActionResult> EliminarIngreso(int id, string tipo, int usuarioId)
+        {
+            try
+            {
+                var ingreso = await ingresoService.BuscarPorId(id);
+                var totalIngresos = await ingresoService.BuscarTotalIngresoEnTipo(tipo, usuarioId);
+                var totalEgresos = await egresoService.BuscarTotalEgresoEnTipo(tipo, usuarioId);
+                var totalValor = totalIngresos - totalEgresos;
+
+                if (ingreso is null)
+                    return RespuestasService.ErrorModelo(this, $"Ingreso con Id ({id}), no encontrado.", 404);
+
+                if ((totalValor - ingreso.Monto) < 0)
+                    return RespuestasService.ErrorModelo(this, "No puedes eliminar el siguiente registro, quedarias en negativo.", 409);
+
+                await ingresoService.Eliminar(ingreso);
+
+                return RespuestasService.Ok("Registro eliminado exitosamente.");
+
+            }catch(Exception error)
             {
                 return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
