@@ -101,5 +101,30 @@ namespace SavingBack.Services
                 throw;
             }
         }
+
+        public async Task<Ingreso?> BuscarPorId(int id)
+        {
+            try
+            {
+                return await context.Ingreso.FirstOrDefaultAsync(ingreso => ingreso.Id == id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task Eliminar(Ingreso ingreso)
+        {
+            try
+            {
+                context.Ingreso.Remove(ingreso);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

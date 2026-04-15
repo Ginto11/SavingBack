@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SavingBack.Dtos;
+using SavingBack.Models;
 using SavingBack.Services;
 
 namespace SavingBack.Controllers.V1
@@ -71,6 +72,34 @@ namespace SavingBack.Controllers.V1
                 var lista = await egresoService.ListaDeEgresos(id);
 
                 return RespuestasService.Ok(lista);
+            }
+            catch (Exception error)
+            {
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<ActionResult> EliminarEgreso(int id, string tipo, int usuarioId)
+        {
+            try
+            {
+                var egreso = await egresoService.BuscarPorId(id);
+                var totalIngresos = await ingresoService.BuscarTotalIngresoEnTipo(tipo, usuarioId);
+                var totalEgresos = await egresoService.BuscarTotalEgresoEnTipo(tipo, usuarioId);
+                var totalValor = totalIngresos - totalEgresos;
+
+                if (egreso is null)
+                    return RespuestasService.ErrorModelo(this, $"Egreso con Id ({id}), no encontrado.", 404);
+
+                if ((totalValor - egreso.Monto) < 0)
+                    return RespuestasService.ErrorModelo(this, "No puedes eliminar el siguiente registro, quedarias en negativo.", 409);
+
+                await egresoService.Eliminar(egreso);
+
+                return RespuestasService.Ok("Registro eliminado exitosamente.");
+
             }
             catch (Exception error)
             {

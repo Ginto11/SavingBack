@@ -99,5 +99,30 @@ namespace SavingBack.Services
             }
         }
 
+        public async Task<Egreso?> BuscarPorId(int id)
+        {
+            try
+            {
+                return await context.Egreso.FirstOrDefaultAsync(egreso => egreso.Id == id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task Eliminar(Egreso egreso)
+        {
+            try
+            {
+                context.Egreso.Remove(egreso);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }
