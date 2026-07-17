@@ -189,3 +189,76 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [Ingreso] ADD [MovimientoInterno] bit NOT NULL DEFAULT CAST(0 AS bit);
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3186045-05:00'
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3186050-05:00'
+WHERE [Id] = 2;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3186053-05:00'
+WHERE [Id] = 3;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3186056-05:00'
+WHERE [Id] = 4;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Egreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3186058-05:00'
+WHERE [Id] = 5;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3185544-05:00', [MovimientoInterno] = CAST(0 AS bit)
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3185548-05:00', [MovimientoInterno] = CAST(0 AS bit)
+WHERE [Id] = 2;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3185551-05:00', [MovimientoInterno] = CAST(0 AS bit)
+WHERE [Id] = 3;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3185553-05:00', [MovimientoInterno] = CAST(0 AS bit)
+WHERE [Id] = 4;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [Ingreso] SET [FechaRegistro] = '2026-07-16T23:11:05.3185556-05:00', [MovimientoInterno] = CAST(0 AS bit)
+WHERE [Id] = 5;
+SELECT @@ROWCOUNT;
+
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260717041106_AgregandoColumnaMovimientoInterno', N'8.0.1');
+GO
+
+COMMIT;
+GO
+

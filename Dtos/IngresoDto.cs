@@ -17,5 +17,7 @@ namespace SavingBack.Dtos
         [Range(1, int.MaxValue, ErrorMessage = "El campo {0} tiene que ser mayor a 0")]
         public int Monto { get; set; }
 
+        public bool MovimientoInterno { get; set; } 
+
     }
 }

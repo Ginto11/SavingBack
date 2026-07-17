@@ -23,6 +23,7 @@ namespace SavingBack.Services
                     UsuarioId =ingreso.UsuarioId,
                     Monto = ingreso.Monto,
                     Tipo = ingreso.Tipo,
+                    MovimientoInterno = ingreso.MovimientoInterno
                 };
 
                 context.Add(nuevoIngreso);

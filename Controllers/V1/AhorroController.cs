@@ -124,72 +124,13 @@ namespace SavingBack.Controllers.V1
             }
         }
 
-        [HttpGet]
-        [Route("usuario/{id}")]
-        public async Task<ActionResult> TodosPorUsuarioId(int paginaActual, int tamanoPagina, int id)
-        {
-            try
-            {
-                if (paginaActual == 0)
-                    return RespuestasService.ErrorModelo(this, "El numero de pagina debe ser mayor a 0", 409);
-
-
-                var resultadoPagina = await ahorroService.ObtenerTodosLosAhorrosPaginadosPorUsuarioId(id, paginaActual, tamanoPagina);
-
-                return RespuestasService.Ok(resultadoPagina);
-
-            }
-            catch (Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-
-        [HttpGet]
-        [Route("usuario/cantidades/{id}")]
-        public async Task<ActionResult> ObtenerCantidadesTotales(int id)
-        {
-            try
-            {
-
-                var cantidades = await ahorroService.ObtenerCantidadesTotalesPorUsuarioId(id);
-
-
-                return RespuestasService.Ok(cantidades);
-
-            }
-            catch (Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-
-        [HttpGet]
-        [Route("usuario/ultimos-movimientos/{id}")]
-        public async Task<ActionResult> ObtenerUltimosMovimientos(int id)
-        {
-            try
-            {
-
-                var ultimos = await ahorroService.ObtenerUltimosMovimientosPorUsuarioId(id);
-
-
-                return RespuestasService.Ok(ultimos);
-
-            }
-            catch (Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-
         [HttpDelete]
-        [Route("{id}")]
-        public async Task<ActionResult> EliminarAhorro(int id)
+        [Route("{ahorroId}")]
+        public async Task<ActionResult> EliminarAhorro(int ahorroId)
         {
             try
             {
-                var ahorroABorrar = await ahorroService.BuscarPorId(id);
+                var ahorroABorrar = await ahorroService.BuscarPorId(ahorroId);
 
                 if (ahorroABorrar == null)
                     return RespuestasService.ErrorModelo(this, $"Ahorro no encontrado.", 404);
@@ -205,6 +146,15 @@ namespace SavingBack.Controllers.V1
 
                 metaPorActualizar.MontoActual -= ahorroABorrar.Monto;
 
+                var ingreso = new IngresoDto
+                {
+                    Monto = (int)ahorroABorrar.Monto,
+                    UsuarioId = ahorroABorrar.UsuarioId,
+                    MovimientoInterno = true,
+                    Tipo = ahorroABorrar.TipoAhorro
+                };
+
+                await ingresoService.Insertar(ingreso);
                 await ahorroService.Eliminar(ahorroABorrar);
                 await metaAhorroService.Actualizar(metaPorActualizar);
 
@@ -216,20 +166,5 @@ namespace SavingBack.Controllers.V1
             }
         }
 
-        [HttpGet]
-        [Route("descripcion/{id}")]
-        public async Task<ActionResult> ObtenerAhorrosPorDescripcion(int paginaActual, int tamanoPagina, int id, string descripcion)
-        {
-            try
-            {
-                var ahorros = await ahorroService.ObtenerAhorrosPorDescripcionPaginadosPorUsuarioId(id, paginaActual, tamanoPagina, descripcion);
-
-                return RespuestasService.Ok(ahorros);
-            }
-            catch(Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
     }
 }
