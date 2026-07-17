@@ -47,51 +47,19 @@ namespace SavingBack.Controllers.V1
             }
         }
 
-        [HttpGet]
-        [Route("totales/usuario/{id}")]
-        public async Task<ActionResult> ObtenerTotales(int id)
-        {
-            try
-            {
-                var resultado = await egresoService.ObtenerTiposTotalesEgresos(id);
-
-                return RespuestasService.Ok(resultado);
-            }
-            catch (Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-
-        [HttpGet]
-        [Route("usuario/{id}")]
-        public async Task<ActionResult> ListarEgresos(int id)
-        {
-            try
-            {
-                var lista = await egresoService.ListaDeEgresos(id);
-
-                return RespuestasService.Ok(lista);
-            }
-            catch (Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-
         [HttpDelete]
-        [Route("{id}")]
-        public async Task<ActionResult> EliminarEgreso(int id, string tipo, int usuarioId)
+        [Route("{egresoId}")]
+        public async Task<ActionResult> EliminarEgreso(int egresoId, string tipo, int usuarioId)
         {
             try
             {
-                var egreso = await egresoService.BuscarPorId(id);
+                var egreso = await egresoService.BuscarPorId(egresoId);
                 var totalIngresos = await ingresoService.BuscarTotalIngresoEnTipo(tipo, usuarioId);
                 var totalEgresos = await egresoService.BuscarTotalEgresoEnTipo(tipo, usuarioId);
                 var totalValor = totalIngresos - totalEgresos;
 
                 if (egreso is null)
-                    return RespuestasService.ErrorModelo(this, $"Egreso con Id ({id}), no encontrado.", 404);
+                    return RespuestasService.ErrorModelo(this, $"Egreso con Id ({egresoId}), no encontrado.", 404);
 
                 if ((totalValor - egreso.Monto) < 0)
                     return RespuestasService.ErrorModelo(this, "No puedes eliminar el siguiente registro, quedarias en negativo.", 409);

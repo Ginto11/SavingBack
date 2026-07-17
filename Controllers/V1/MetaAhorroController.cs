@@ -21,24 +21,7 @@ namespace SavingBack.Controllers.V1
             this.metaAhorroService = metaAhorroService;
         }
 
-        [HttpGet]
-        [Route("busqueda/{id}")]
-        public async Task<ActionResult> BuscarMetaPorNombre([FromQuery] string nombre, int id)
-        {
-            try
-            {
-
-                if (nombre.IsNullOrEmpty())
-                    return RespuestasService.ErrorModelo(this, "El campo Nombre es obligatorio.", 400);
-
-                var metasBuscadas = await metaAhorroService.ObtenerMetaPorNombre(nombre, id);
-
-                return RespuestasService.Ok(metasBuscadas);
-            }catch(Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
+  
 
         [HttpPost]
         public async Task<ActionResult> Nueva(MetaAhorro meta)
@@ -58,47 +41,15 @@ namespace SavingBack.Controllers.V1
         }
 
         [HttpGet]
-        [Route("usuario/{id}/activas")]
-        public async Task<ActionResult> ObtenerMetasPorUsuario(int id)
+        [Route("{metaAhorroId}")]
+        public async Task<ActionResult> ObtenerMetaPorId(int metaAhorroId)
         {
             try
             {
-                var metas = await metaAhorroService.BuscarMetasActivasPorUsuarioId(id);
-
-                return RespuestasService.Ok(metas);
-
-            }
-            catch (Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-
-        [HttpGet]
-        [Route("usuario/{id}/todas")]
-        public async Task<ActionResult> ObtenerTodasLasMetasPorUsuarioId(int id)
-        {
-            try
-            {
-                var metas = await metaAhorroService.BuscarTodasLasMetasPorUsuarioId(id);
-
-                return RespuestasService.Ok(metas);
-            }catch(Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-
-        [HttpGet]
-        [Route("{id}")]
-        public async Task<ActionResult> ObtenerMetaPorId(int id)
-        {
-            try
-            {
-                var meta = await metaAhorroService.ObtenerPorId(id);
+                var meta = await metaAhorroService.ObtenerPorId(metaAhorroId);
 
                 if (meta is null)
-                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada.", 404);
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({metaAhorroId}), no encontrada.", 404);
 
                 return RespuestasService.Ok(meta);
 
@@ -109,33 +60,18 @@ namespace SavingBack.Controllers.V1
             }
         }
 
-        [HttpGet]
-        [Route("progreso/usuario/{id}")]
-        public async Task<ActionResult> ObtenerMetasActivasConProgresoPorUsuarioId(int id)
-        {
-            try
-            {
-                var metas = await metaAhorroService.BuscarMetasActivasConProgresoPorUsuarioId(id);
-
-                return RespuestasService.Ok(metas);
-
-            }
-            catch (Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
+        
 
         [HttpDelete]
-        [Route("cancelar/{id}")]
-        public async Task<ActionResult> Cancelar(int id)
+        [Route("cancelar/{metaAhorroId}")]
+        public async Task<ActionResult> Cancelar(int metaAhorroId)
         {
             try
             {
-                var meta = await metaAhorroService.ObtenerPorId(id);
+                var meta = await metaAhorroService.ObtenerPorId(metaAhorroId);
 
                 if (meta is null)
-                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada", 404);
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({metaAhorroId}), no encontrada", 404);
                 
                 if (meta.MontoActual > 0)
                     return RespuestasService.ErrorModelo(this, "La meta actual no se puede eliminar, ya que cuenta con ahorros.", 409);
@@ -153,18 +89,27 @@ namespace SavingBack.Controllers.V1
         }
 
         [HttpPut]
-        [Route("{id}")]
-        public async Task<ActionResult> ActualizarMeta(int id, ActualizarMetaDto meta)
+        [Route("{metaAhorroId}")]
+        public async Task<ActionResult> ActualizarMeta(int metaAhorroId, ActualizarMetaDto meta)
         {
             try
             {
                 if (meta.Nombre.IsNullOrEmpty())
                     return RespuestasService.ErrorModelo(this, "El campo Nombre es requerido.", 400);
 
-                var metaEncontrada = await metaAhorroService.ObtenerPorId(id);
+                var metaEncontrada = await metaAhorroService.ObtenerPorId(metaAhorroId);
 
                 if (metaEncontrada is null)
-                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({id}), no encontrada", 404);
+                    return RespuestasService.ErrorModelo(this, $"Meta con Id = ({metaAhorroId}), no encontrada", 404);
+
+                if (metaEncontrada.MontoActual > meta.MontoObjetivo)
+                    return RespuestasService.ErrorModelo(this, "El monto objetivo no puede ser menor de lo que ya llevas ahorrado.", 409);
+
+                if (metaEncontrada.MontoActual == meta.MontoObjetivo)
+                {
+                    metaEncontrada.Estado = "Cumplida";
+                }
+
 
                 metaEncontrada.MontoObjetivo = meta.MontoObjetivo;
                 metaEncontrada.Nombre = meta.Nombre;
@@ -178,23 +123,6 @@ namespace SavingBack.Controllers.V1
                 return RespuestasService.ErrorModelo(this, error.Message, 500);
             }
         }
-
-        [HttpGet]
-        [Route("estado/usuario/{id}")]
-        public async Task<ActionResult> ObtenerMetasCumplidasPorUsuarioId(int id, [FromQuery] string estado)
-        {
-            try
-            {
-                var metasCumplidas = await metaAhorroService.MetasCumplidasPorUsuarioId(id, estado);
-
-                return RespuestasService.Ok(metasCumplidas);
-
-            }catch(Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-
 
     }
 }

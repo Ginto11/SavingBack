@@ -54,7 +54,8 @@ namespace SavingBack.Services
             var ingresos = appDbContext.Ingreso
                 .Where(i => i.UsuarioId == id &&
                             i.FechaRegistro >= inicioMes &&
-                            i.FechaRegistro < finMes)
+                            i.FechaRegistro < finMes && 
+                            i.MovimientoInterno != true)
                 .GroupBy(i => i.FechaRegistro.Day)
                 .Select(g => new {
                     Dia = g.Key,
@@ -99,7 +100,7 @@ namespace SavingBack.Services
         public async Task<List<MetaCumplimientoGrafica>> ObtenerListaMetaCumplimiento(int id)
         {
             return await appDbContext.MetaAhorro
-                .Where(meta => meta.UsuarioId == id && meta.Estado != "Cumplida")
+                .Where(meta => meta.UsuarioId == id && meta.Estado != "Cumplida" && meta.Estado != "Cancelada")
                 .Select(meta => new MetaCumplimientoGrafica
                 {
                     NombreMeta = meta.Nombre,
@@ -135,7 +136,7 @@ namespace SavingBack.Services
         public async Task<List<IngresoPorDias>> ObtenerListaIngresoPorDias(int id)
         {
             var datos =await  appDbContext.Ingreso
-                .Where(i => i.UsuarioId == id && i.FechaRegistro.Month == this.mesActual && i.FechaRegistro.Year == this.anioActual)
+                .Where(i => i.UsuarioId == id && i.FechaRegistro.Month == this.mesActual && i.FechaRegistro.Year == this.anioActual && i.MovimientoInterno != true)
                 .GroupBy(i => i.FechaRegistro.Day)
                 .Select(i => new IngresoPorDias
                 {

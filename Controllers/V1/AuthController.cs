@@ -1,5 +1,4 @@
 ﻿using Asp.Versioning;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SavingBack.Dtos;
 using SavingBack.Services;
@@ -41,32 +40,6 @@ namespace SavingBack.Controllers.V1
             }
         }
 
-        [HttpGet]
-        [Route("validar_token")]
-        public IActionResult ValidarToken([FromHeader(Name = "Authorization")] string? bearerToken)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(bearerToken) || !bearerToken.StartsWith("Bearer "))
-                    return RespuestasService.ErrorModelo(this, "Token no enviado o mal formado.", 401);
-
-                var tokenJWT = bearerToken.Substring("Bearer ".Length);
-
-                var validacion = authService.ValidarJWT(tokenJWT);
-                if (validacion == null)
-                {
-                    return RespuestasService.ErrorModelo(this, "Token expirado, inicie sesión nuevamente.", 401);
-                }
-
-                return RespuestasService.TokenValido();
-
-            }
-            catch (Exception error)
-            {
-                return RespuestasService.ErrorModelo(this, error.Message, 500);
-            }
-        }
-        
 
     }
 }

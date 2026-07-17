@@ -13,5 +13,7 @@
         public required int Monto { get; set; }
 
         public Usuario? Usuario { get; set; }
+
+        public bool MovimientoInterno { get; set; } = false;
     }
 }
