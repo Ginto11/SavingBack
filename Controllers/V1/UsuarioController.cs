@@ -468,6 +468,7 @@ namespace SavingBack.Controllers.V1
             if (transferencia.Monto < transferencia.CostoTransferencia)
                 return RespuestasService.ErrorModelo(this, "El monto no puede ser menor al costo de transferencia.", 500);
 
+
             try
             {
                 int montoPorIngresar = transferencia.Monto - transferencia.CostoTransferencia;
