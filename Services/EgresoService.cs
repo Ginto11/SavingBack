@@ -48,7 +48,8 @@ namespace SavingBack.Services
                     totales.GetValueOrDefault("Efectivo"),
                     totales.GetValueOrDefault("Nequi"),
                     totales.GetValueOrDefault("App"),
-                    totales.GetValueOrDefault("Banco")
+                    totales.GetValueOrDefault("Banco"),
+                    totales.GetValueOrDefault("Nube")
                 );
 
                 return resultado;

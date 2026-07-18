@@ -10,12 +10,15 @@
 
         public int TotalBanco { get; set; }
 
-        public TiposEgresosTotales(int efectivo, int nequi, int app, int totalBanco)
+        public int TotalNube { get; set; }
+
+        public TiposEgresosTotales(int efectivo, int nequi, int app, int totalBanco, int totalNube)
         {
             TotalEfectivo = efectivo;
             TotalNequi = nequi;
             TotalApp = app;
             TotalBanco = totalBanco;
+            TotalNube = totalNube;
         }
     }
 }

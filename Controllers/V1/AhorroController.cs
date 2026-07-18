@@ -112,7 +112,10 @@ namespace SavingBack.Controllers.V1
                     {
                         await correoService.MensajeAdministradores(infoMensaje);
                     }
-                    else { await correoService.MensajeClientes(infoMensaje, usuario.Correo); }
+                    if (rol == "Cliente")
+                    { 
+                        await correoService.MensajeClientes(infoMensaje, usuario.Correo); 
+                    }
                 }
 
                 return RespuestasService.Created();

@@ -32,7 +32,7 @@ namespace SavingBack.Database
                 .ToTable(tabla => tabla.HasCheckConstraint("CK_Ahorro_TipoAhorro", "[TipoAhorro] IN ('Efectivo', 'Nequi', 'Banco')"));
 
             model.Entity<Ingreso>()
-                .ToTable(tabla => tabla.HasCheckConstraint("CK_Ingreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco')"));
+                .ToTable(tabla => tabla.HasCheckConstraint("CK_Ingreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco', 'Nube')"));
 
             model.Entity<Ingreso>()
                 .HasData(
@@ -44,7 +44,7 @@ namespace SavingBack.Database
                 );
 
             model.Entity<Egreso>()
-                .ToTable(tabla => tabla.HasCheckConstraint("CK_Egreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco')"));
+                .ToTable(tabla => tabla.HasCheckConstraint("CK_Egreso_Tipo", "[Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco', 'Nube')"));
 
             model.Entity<Egreso>()
                 .HasData(
@@ -89,6 +89,7 @@ namespace SavingBack.Database
             model.Entity<Usuario>().ToTable(t => t.HasCheckConstraint("CK_Usuario_Rol", "Rol IN ('Cliente', 'Admin')"));
 
             model.Entity<MetaAhorro>().ToTable(t => t.HasCheckConstraint("CK_MetaAhorro_Estado", "Estado IN ('Activa', 'Cumplida', 'Cancelada')"));
+
 
         }
     }
