@@ -22,6 +22,8 @@ namespace SavingBack.Models
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
+        public DateTime? FechaCumplimiento { get; set; }
+
         public List<Ahorro>? Ahorros { get; set; }
 
         public string? Estado { get; set; }

@@ -28,6 +28,7 @@ builder.Services.AddScoped<EgresoService>();
 builder.Services.AddScoped<CategoriaGastoService>();
 builder.Services.AddScoped<GraficaService>();
 builder.Services.AddScoped<ReporteService>();
+builder.Services.AddScoped<PdfService>();
 
 builder.Services.AddLogging();      //PERMITE AGREGAR LOGS (MENSAJE EN TIEMPO DE EJECUSION EN LA CONSOLA)
 builder.Logging.ClearProviders();   //LIMPIA LOS LOGS POR DEFECTO QUE VIENEN 

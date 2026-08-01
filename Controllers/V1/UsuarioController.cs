@@ -9,6 +9,7 @@ using SavingBack.Dtos;
 using SavingBack.Models;
 using SavingBack.Services;
 using SavingBack.Utilities;
+using System.Threading.Tasks;
 
 namespace SavingBack.Controllers.V1
 {
@@ -27,9 +28,11 @@ namespace SavingBack.Controllers.V1
         private readonly ReporteService reporteService;
         private readonly MetaAhorroService metaAhorroService;
         private readonly GraficaService graficaService;
+        private readonly CorreoService correoService;
+        private readonly PdfService pdfService;
 
 
-        public UsuarioController(UsuarioService usuarioService, Utilidad utilidadService, IConfiguration config, IHostEnvironment environment, AhorroService ahorroService, ReporteService reporteService, EgresoService egresoService, IngresoService ingresoService, MetaAhorroService metaAhorroService, GraficaService graficaService)
+        public UsuarioController(PdfService pdfService, CorreoService correoService, UsuarioService usuarioService, Utilidad utilidadService, IConfiguration config, IHostEnvironment environment, AhorroService ahorroService, ReporteService reporteService, EgresoService egresoService, IngresoService ingresoService, MetaAhorroService metaAhorroService, GraficaService graficaService)
         {
             this.utilidadService = utilidadService;
             this.usuarioService = usuarioService;
@@ -41,6 +44,8 @@ namespace SavingBack.Controllers.V1
             this.ingresoService = ingresoService;
             this.metaAhorroService = metaAhorroService;
             this.graficaService = graficaService;
+            this.correoService = correoService;
+            this.pdfService = pdfService;
         }
 
         #region METODOS BASICOS
@@ -53,6 +58,12 @@ namespace SavingBack.Controllers.V1
                 usuario.Contrasena = utilidadService.Encriptar(usuario.Contrasena);
 
                 await usuarioService.Insertar(usuario);
+
+                if (environment.IsProduction())
+                    await correoService.MensajeBienvenida(usuario, "https://saving-front.vercel.app/ingresar");
+
+                if (environment.IsDevelopment())
+                    await correoService.MensajeBienvenida(usuario, "http://localhost:4200/ingresar");
 
                 return RespuestasService.Created();
             }
@@ -506,5 +517,23 @@ namespace SavingBack.Controllers.V1
         }
         #endregion
 
+        #region METODO REPORTE PDF
+        [HttpGet]
+        [Route("metas/{metaAhorroId}/pdf")]
+        public async Task<ActionResult> ObtenerDataPdf(int metaAhorroId)
+        {
+            try
+            {
+                var obtenerDataPdf = await pdfService.ObtenerDataPdfMetaAhorro(metaAhorroId);
+
+                return RespuestasService.Ok(obtenerDataPdf);
+
+            }catch(Exception error)
+            {
+                return RespuestasService.ErrorModelo(this, error.Message, 500);
+            }
+        }
+
+        #endregion
     }
 }

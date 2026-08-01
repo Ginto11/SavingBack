@@ -1,11 +1,12 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "SavingBack",
+    "title": "API REST full SavingBack",
+    "description": "API REST full para la gestión de metas de ahorro, ingresos y egresos, esto con el fin de mejorar las finanzas.",
     "version": "1.0"
   },
   "paths": {
-    "/api/ahorros": {
+    "/api/v1/ahorros": {
       "post": {
         "tags": [
           "Ahorro"
@@ -36,14 +37,14 @@
         }
       }
     },
-    "/api/ahorros/usuario/{id}": {
-      "get": {
+    "/api/v1/ahorros/{ahorroId}": {
+      "delete": {
         "tags": [
           "Ahorro"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "ahorroId",
             "in": "path",
             "required": true,
             "schema": {
@@ -59,53 +60,7 @@
         }
       }
     },
-    "/api/ahorros/usuario/cantidades/{id}": {
-      "get": {
-        "tags": [
-          "Ahorro"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ahorros/usuario/ultimos-movimientos/{id}": {
-      "get": {
-        "tags": [
-          "Ahorro"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/auth": {
+    "/api/v1/auth": {
       "post": {
         "tags": [
           "Auth"
@@ -136,10 +91,10 @@
         }
       }
     },
-    "/api/auth/validar_token": {
+    "/api/v1/categoria-gasto": {
       "get": {
         "tags": [
-          "Auth"
+          "CategoriaGasto"
         ],
         "responses": {
           "200": {
@@ -148,7 +103,7 @@
         }
       }
     },
-    "/api/egresos": {
+    "/api/v1/egresos": {
       "post": {
         "tags": [
           "Egreso"
@@ -179,16 +134,31 @@
         }
       }
     },
-    "/api/egresos/totales/usuario/{id}": {
-      "get": {
+    "/api/v1/egresos/{egresoId}": {
+      "delete": {
         "tags": [
           "Egreso"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "egresoId",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -202,30 +172,7 @@
         }
       }
     },
-    "/api/egresos/usuario/{id}": {
-      "get": {
-        "tags": [
-          "Egreso"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ingresos": {
+    "/api/v1/ingresos": {
       "post": {
         "tags": [
           "Ingreso"
@@ -256,16 +203,31 @@
         }
       }
     },
-    "/api/ingresos/totales/usuario/{id}": {
-      "get": {
+    "/api/v1/ingresos/{ingresoId}": {
+      "delete": {
         "tags": [
           "Ingreso"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "ingresoId",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tipo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usuarioId",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -279,30 +241,7 @@
         }
       }
     },
-    "/api/ingresos/usuario/{id}": {
-      "get": {
-        "tags": [
-          "Ingreso"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/metas": {
+    "/api/v1/metas": {
       "post": {
         "tags": [
           "MetaAhorro"
@@ -333,60 +272,14 @@
         }
       }
     },
-    "/api/metas/usuario/{id}": {
+    "/api/v1/metas/{metaAhorroId}": {
       "get": {
         "tags": [
           "MetaAhorro"
         ],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/metas/usuario/{id}/todas": {
-      "get": {
-        "tags": [
-          "MetaAhorro"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/metas/{id}": {
-      "get": {
-        "tags": [
-          "MetaAhorro"
-        ],
-        "parameters": [
-          {
-            "name": "id",
+            "name": "metaAhorroId",
             "in": "path",
             "required": true,
             "schema": {
@@ -407,7 +300,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "metaAhorroId",
             "in": "path",
             "required": true,
             "schema": {
@@ -442,37 +335,14 @@
         }
       }
     },
-    "/api/metas/progreso/usuario/{id}": {
-      "get": {
-        "tags": [
-          "MetaAhorro"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/metas/cancelar/{id}": {
+    "/api/v1/metas/cancelar/{metaAhorroId}": {
       "delete": {
         "tags": [
           "MetaAhorro"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "metaAhorroId",
             "in": "path",
             "required": true,
             "schema": {
@@ -488,17 +358,7 @@
         }
       }
     },
-    "/api/usuarios": {
-      "get": {
-        "tags": [
-          "Usuario"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
+    "/api/v1/usuarios": {
       "post": {
         "tags": [
           "Usuario"
@@ -507,17 +367,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/CrearUsuarioDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/CrearUsuarioDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/CrearUsuarioDto"
               }
             }
           }
@@ -527,16 +387,26 @@
             "description": "OK"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
-    "/api/usuarios/{id}": {
+    "/api/v1/usuarios/{usuarioId}": {
       "get": {
         "tags": [
           "Usuario"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "usuarioId",
             "in": "path",
             "required": true,
             "schema": {
@@ -557,7 +427,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "usuarioId",
             "in": "path",
             "required": true,
             "schema": {
@@ -648,6 +518,350 @@
           }
         }
       }
+    },
+    "/api/v1/usuarios/{usuarioId}/ahorros": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "paginaActual",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tamanoPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "descripcion",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/ahorros/totales": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/ahorros/recientes": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/reportes/ahorros/excel": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/egresos": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/egresos/totales": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/ingresos": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/ingresos/totales": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/metas": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "estado",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/metas/progreso": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{usuarioId}/estadisticas": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "usuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/transferencia": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferenciaDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferenciaDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferenciaDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/metas/{metaAhorroId}/pdf": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "metaAhorroId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -660,10 +874,12 @@
         "type": "object",
         "properties": {
           "nombre": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 50,
+            "minLength": 5,
+            "type": "string"
           },
           "montoObjetivo": {
+            "minimum": 1,
             "type": "number",
             "format": "double"
           }
@@ -671,6 +887,9 @@
         "additionalProperties": false
       },
       "Ahorro": {
+        "required": [
+          "tipoAhorro"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -685,6 +904,8 @@
             "$ref": "#/components/schemas/Usuario"
           },
           "monto": {
+            "maximum": 100000000,
+            "minimum": 1,
             "type": "number",
             "format": "double"
           },
@@ -693,21 +914,30 @@
             "format": "date-time"
           },
           "descripcion": {
+            "minLength": 1,
             "type": "string",
             "nullable": true
           },
           "metaAhorroId": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "metaAhorro": {
             "$ref": "#/components/schemas/MetaAhorro"
+          },
+          "tipoAhorro": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
       "CrearAhorroDto": {
+        "required": [
+          "descripcion",
+          "monto",
+          "tipoAhorro"
+        ],
         "type": "object",
         "properties": {
           "usuarioId": {
@@ -715,16 +945,84 @@
             "format": "int32"
           },
           "monto": {
+            "maximum": 100000000,
+            "minimum": 1,
             "type": "number",
             "format": "double"
           },
           "descripcion": {
+            "minLength": 1,
             "type": "string",
             "nullable": true
           },
           "metaAhorroId": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
             "format": "int32"
+          },
+          "tipoAhorro": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CrearUsuarioDto": {
+        "required": [
+          "aceptaTerminos",
+          "cedula",
+          "contrasena",
+          "correo",
+          "fechaNacimiento",
+          "nombreUsuario",
+          "primerApellido",
+          "primerNombre"
+        ],
+        "type": "object",
+        "properties": {
+          "primerNombre": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "primerApellido": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "cedula": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nombreUsuario": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "correo": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "fechaNacimiento": {
+            "type": "string",
+            "format": "date"
+          },
+          "contrasena": {
+            "minLength": 8,
+            "type": "string"
+          },
+          "aceptaTerminos": {
+            "type": "boolean"
+          },
+          "manejaGastos": {
+            "type": "boolean"
+          },
+          "rol": {
+            "type": "string",
+            "nullable": true
+          },
+          "fotoPerfil": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -757,6 +1055,14 @@
             "minimum": 1,
             "type": "integer",
             "format": "int32"
+          },
+          "categoriaGastoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreCategoriaGasto": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -789,13 +1095,15 @@
             "minimum": 1,
             "type": "integer",
             "format": "int32"
+          },
+          "movimientoInterno": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
       },
       "MetaAhorro": {
         "required": [
-          "montoObjetivo",
           "nombre"
         ],
         "type": "object",
@@ -812,10 +1120,13 @@
             "$ref": "#/components/schemas/Usuario"
           },
           "nombre": {
+            "minLength": 1,
             "type": "string",
             "nullable": true
           },
           "montoObjetivo": {
+            "maximum": 10000000,
+            "minimum": 1,
             "type": "number",
             "format": "double"
           },
@@ -827,6 +1138,11 @@
           "fechaCreacion": {
             "type": "string",
             "format": "date-time"
+          },
+          "fechaCumplimiento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "ahorros": {
             "type": "array",
@@ -842,9 +1158,40 @@
         },
         "additionalProperties": false
       },
+      "TransferenciaDTO": {
+        "required": [
+          "tipoActual",
+          "tipoDestino"
+        ],
+        "type": "object",
+        "properties": {
+          "usuarioId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tipoActual": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoDestino": {
+            "type": "string",
+            "nullable": true
+          },
+          "monto": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "costoTransferencia": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "Usuario": {
         "required": [
           "aceptaTerminos",
+          "cedula",
           "contrasena",
           "correo",
           "fechaNacimiento",
@@ -859,32 +1206,33 @@
             "format": "int32"
           },
           "primerNombre": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "primerApellido": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "cedula": {
             "type": "integer",
             "format": "int64"
           },
           "nombreUsuario": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "correo": {
             "type": "string",
+            "format": "email",
             "nullable": true
           },
           "fechaNacimiento": {
             "type": "string",
-            "format": "date-time"
+            "format": "date"
           },
           "contrasena": {
-            "type": "string",
-            "nullable": true
+            "minLength": 8,
+            "type": "string"
           },
           "aceptaTerminos": {
             "type": "boolean"
@@ -911,16 +1259,29 @@
         "type": "object",
         "properties": {
           "usuario": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "contrasena": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Ingresa el token así: Bearer {tu_token}",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }
