@@ -107,6 +107,7 @@ namespace SavingBack.Controllers.V1
 
                 if (metaEncontrada.MontoActual == meta.MontoObjetivo)
                 {
+                    metaEncontrada.FechaCumplimiento = DateTime.Now;
                     metaEncontrada.Estado = "Cumplida";
                 }
 

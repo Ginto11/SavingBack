@@ -1,8 +1,8 @@
 [
   {
-    "ContainingType": "SavingBack.Controllers.AhorroController",
+    "ContainingType": "SavingBack.Controllers.V1.AhorroController",
     "Method": "Agregar",
-    "RelativePath": "api/ahorros",
+    "RelativePath": "api/v1/ahorros",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -16,15 +16,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.AhorroController",
-    "Method": "TodosPorUsuarioId",
-    "RelativePath": "api/ahorros/usuario/{id}",
-    "HttpMethod": "GET",
+    "ContainingType": "SavingBack.Controllers.V1.AhorroController",
+    "Method": "EliminarAhorro",
+    "RelativePath": "api/v1/ahorros/{ahorroId}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "ahorroId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -32,41 +32,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.AhorroController",
-    "Method": "ObtenerCantidadesTotales",
-    "RelativePath": "api/ahorros/usuario/cantidades/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SavingBack.Controllers.AhorroController",
-    "Method": "ObtenerUltimosMovimientos",
-    "RelativePath": "api/ahorros/usuario/ultimos-movimientos/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SavingBack.Controllers.AuthController",
+    "ContainingType": "SavingBack.Controllers.V1.AuthController",
     "Method": "Login",
-    "RelativePath": "api/auth",
+    "RelativePath": "api/v1/auth",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -80,25 +48,19 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.AuthController",
-    "Method": "ValidarToken",
-    "RelativePath": "api/auth/validar_token",
+    "ContainingType": "SavingBack.Controllers.V1.CategoriaGastoController",
+    "Method": "ListarCategoriasGastos",
+    "RelativePath": "api/v1/categoria-gasto",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Authorization",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.EgresoController",
+    "ContainingType": "SavingBack.Controllers.V1.EgresoController",
     "Method": "RegistrarEgreso",
-    "RelativePath": "api/egresos",
+    "RelativePath": "api/v1/egresos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -112,41 +74,35 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.EgresoController",
-    "Method": "ObtenerTotales",
-    "RelativePath": "api/egresos/totales/usuario/{id}",
-    "HttpMethod": "GET",
+    "ContainingType": "SavingBack.Controllers.V1.EgresoController",
+    "Method": "EliminarEgreso",
+    "RelativePath": "api/v1/egresos/{egresoId}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "egresoId",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "tipo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.EgresoController",
-    "Method": "ListarEgresos",
-    "RelativePath": "api/egresos/usuario/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SavingBack.Controllers.IngresoController",
+    "ContainingType": "SavingBack.Controllers.V1.IngresoController",
     "Method": "RegistrarIngreso",
-    "RelativePath": "api/ingresos",
+    "RelativePath": "api/v1/ingresos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -160,41 +116,35 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.IngresoController",
-    "Method": "ObtenerTotales",
-    "RelativePath": "api/ingresos/totales/usuario/{id}",
-    "HttpMethod": "GET",
+    "ContainingType": "SavingBack.Controllers.V1.IngresoController",
+    "Method": "EliminarIngreso",
+    "RelativePath": "api/v1/ingresos/{ingresoId}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "ingresoId",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "tipo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.IngresoController",
-    "Method": "ListarIngresos",
-    "RelativePath": "api/ingresos/usuario/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
+    "ContainingType": "SavingBack.Controllers.V1.MetaAhorroController",
     "Method": "Nueva",
-    "RelativePath": "api/metas",
+    "RelativePath": "api/v1/metas",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -208,15 +158,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
+    "ContainingType": "SavingBack.Controllers.V1.MetaAhorroController",
     "Method": "ObtenerMetaPorId",
-    "RelativePath": "api/metas/{id}",
+    "RelativePath": "api/v1/metas/{metaAhorroId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "metaAhorroId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -224,15 +174,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
+    "ContainingType": "SavingBack.Controllers.V1.MetaAhorroController",
     "Method": "ActualizarMeta",
-    "RelativePath": "api/metas/{id}",
+    "RelativePath": "api/v1/metas/{metaAhorroId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "metaAhorroId",
         "Type": "System.Int32",
         "IsRequired": true
       },
@@ -245,15 +195,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
+    "ContainingType": "SavingBack.Controllers.V1.MetaAhorroController",
     "Method": "Cancelar",
-    "RelativePath": "api/metas/cancelar/{id}",
+    "RelativePath": "api/v1/metas/cancelar/{metaAhorroId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "metaAhorroId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -261,57 +211,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
-    "Method": "ObtenerMetasActivasConProgresoPorUsuarioId",
-    "RelativePath": "api/metas/progreso/usuario/{id}",
-    "HttpMethod": "GET",
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "Nuevo",
+    "RelativePath": "api/v1/usuarios",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
+        "Name": "usuario",
+        "Type": "SavingBack.Dtos.CrearUsuarioDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
-    "Method": "ObtenerMetasPorUsuario",
-    "RelativePath": "api/metas/usuario/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SavingBack.Controllers.MetaAhorroController",
-    "Method": "ObtenerTodasLasMetasPorUsuarioId",
-    "RelativePath": "api/metas/usuario/{id}/todas",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SavingBack.Controllers.UsuarioController",
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
     "Method": "ObtenerTodos",
-    "RelativePath": "api/usuarios",
+    "RelativePath": "api/v1/usuarios",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -319,31 +237,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.UsuarioController",
-    "Method": "Nuevo",
-    "RelativePath": "api/usuarios",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usuario",
-        "Type": "SavingBack.Models.Usuario",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SavingBack.Controllers.UsuarioController",
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
     "Method": "ObtenerUsuario",
-    "RelativePath": "api/usuarios/{id}",
+    "RelativePath": "api/v1/usuarios/{usuarioId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "usuarioId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -351,15 +253,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SavingBack.Controllers.UsuarioController",
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
     "Method": "ActualizarUsuario",
-    "RelativePath": "api/usuarios/{id}",
+    "RelativePath": "api/v1/usuarios/{usuarioId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "usuarioId",
         "Type": "System.Int32",
         "IsRequired": true
       },
@@ -409,6 +311,249 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ObtenerAhorrosPorUsuario",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/ahorros",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "paginaActual",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "tamanoPagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ObtenerUltimosMovimientos",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/ahorros/recientes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ObtenerTotalesPorUsuario",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/ahorros/totales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ListarEgresos",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/egresos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ObtenerTotales",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/egresos/totales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ObtenerData",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/estadisticas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ListarIngresos",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/ingresos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "IngresosTotalesPorUsuario",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/ingresos/totales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "BuscarMetaPorNombre",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/metas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "estado",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ObtenerMetasActivasConProgresoPorUsuarioId",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/metas/progreso",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ExportarExcel",
+    "RelativePath": "api/v1/usuarios/{usuarioId}/reportes/ahorros/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuarioId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "ObtenerDataPdf",
+    "RelativePath": "api/v1/usuarios/metas/{metaAhorroId}/pdf",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "metaAhorroId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V1.UsuarioController",
+    "Method": "TransferirDinero",
+    "RelativePath": "api/v1/usuarios/transferencia",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "transferencia",
+        "Type": "SavingBack.Dtos.TransferenciaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SavingBack.Controllers.V2.HomeController",
+    "Method": "Home",
+    "RelativePath": "api/v2/home",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

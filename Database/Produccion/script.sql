@@ -262,3 +262,25 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [Ingreso] DROP CONSTRAINT [CK_Ingreso_Tipo];
+GO
+
+ALTER TABLE [Egreso] DROP CONSTRAINT [CK_Egreso_Tipo];
+GO
+
+ALTER TABLE [Ingreso] ADD CONSTRAINT [CK_Ingreso_Tipo] CHECK ([Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco', 'Nube'));
+GO
+
+ALTER TABLE [Egreso] ADD CONSTRAINT [CK_Egreso_Tipo] CHECK ([Tipo] IN ('Efectivo', 'App', 'Nequi', 'Banco', 'Nube'));
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260718164156_AñadiendoOpcionNube', N'8.0.1');
+GO
+
+COMMIT;
+GO
+

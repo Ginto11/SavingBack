@@ -1,0 +1,37 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API REST full SavingBack",
+    "description": "API REST full para la gestión de metas de ahorro, ingresos y egresos, esto con el fin de mejorar las finanzas.",
+    "version": "2.0"
+  },
+  "paths": {
+    "/api/v2/home": {
+      "get": {
+        "tags": [
+          "Home"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Ingresa el token así: Bearer {tu_token}",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}
