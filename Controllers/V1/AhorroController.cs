@@ -91,6 +91,7 @@ namespace SavingBack.Controllers.V1
                 if (meta.MontoActual >= meta.MontoObjetivo)
                 {
                     meta.Estado = "Cumplida";
+                    meta.FechaCumplimiento = DateTime.Now;
                 }
 
                 await ahorroService.Insertar(ahorro);
