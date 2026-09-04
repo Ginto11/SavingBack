@@ -1,6 +1,6 @@
 ![Badge en Desarrollo](https://img.shields.io/badge/STATUS-EN%20DESARROLLO-green)
 
-![C#](https://img.shields.io/badge/C%23-512BD4?style=flat&logo=csharp&logoColor=white)![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white)![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)![JWT](https://img.shields.io/badge/JWT-111827?style=flat&logo=jsonwebtokens&logoColor=white)![SMTP](https://img.shields.io/badge/SMTP-64748B?style=flat&logo=minutemailer&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-512BD4?style=flat&logo=csharp&logoColor=white) ![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white) ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-111827?style=flat&logo=jsonwebtokens&logoColor=white) ![SMTP](https://img.shields.io/badge/SMTP-64748B?style=flat&logo=minutemailer&logoColor=white)
 
 # 💰 SavingBack
 
