@@ -284,3 +284,16 @@ GO
 COMMIT;
 GO
 
+BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [MetaAhorro] ADD [FechaCumplimiento] datetime2 NULL;
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260730144656_AñadiendoFechaCumplimiento', N'8.0.1');
+GO
+
+COMMIT;
+GO
+
